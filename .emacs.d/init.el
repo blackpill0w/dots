@@ -1,12 +1,26 @@
 (setq custom-file (concat user-emacs-directory "custom.el"))
-(setq backup-directory-alist (concat user-emacs-directory "backup"))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup/"))
+      backup-by-copying t
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2)
 
 (setq gc-cons-threshold (expt 2 24))
 (tool-bar-mode -1)
 
+;;; Font
+;(add-to-list 'default-frame-alist
+;             '(font . "fantasque sans mono-14"))
+
 ;;; C-w to close buffer
 (global-unset-key (kbd "C-w"))
 (global-set-key (kbd "C-w") 'kill-current-buffer)
+
+;;; Move arround split windows
+(global-set-key (kbd "C-, <left>")  'windmove-left)
+(global-set-key (kbd "C-, <right>") 'windmove-right)
+(global-set-key (kbd "C-, <up>")    'windmove-up)
+(global-set-key (kbd "C-, <down>")  'windmove-down)
 
 ;;; Recently opened files
 (recentf-mode 1)
@@ -19,9 +33,13 @@
 ;;; Cua mode
 (cua-mode t)
 
-;;; Line numbers
-(global-linum-mode t)
+;;; Set file's name as title
+(setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 
+;;; Line numbers
+(setq column-number-mode t)
+(setq global-line-number-mode t)
+(global-display-line-numbers-mode)
 ;;; Add melpa
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -39,13 +57,7 @@
 (use-package dracula-theme
   :ensure t)
 
-(use-package gruber-darker-theme
-  :ensure t)
-
-(use-package gruvbox-theme
-  :ensure t)
-
-(load-theme 'gruber-darker t)
+(load-theme 'outrun t)
 
 ;;; Multiple cursors
 (global-unset-key (kbd "C-<mouse-1>"))
@@ -82,3 +94,9 @@
   :config (drag-stuff-define-keys)
   :config (drag-stuff-global-mode 1)
   )
+
+;;; Company
+(use-package company
+  :ensure t
+  :config (add-hook 'after-init-hook 'global-company-mode))
+

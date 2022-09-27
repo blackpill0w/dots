@@ -2,7 +2,6 @@
 
 ;;; Code:
 (deftheme outrun)
-
 
 ;;;; Configuration options:
 
@@ -107,7 +106,7 @@ The theme has to be reloaded after changing anything in this group."
                       (list :foreground outrun-comment :box outrun-bg)
                     (list :foreground fg4 :box bg2)))
                (read-multiple-choice-face :inherit completions-first-difference)
-               (region :inherit match :extend t)
+               (region :background ,outrun-current)
                (shadow :foreground ,outrun-comment)
                (success :foreground ,outrun-green)
                (toutrunltip :foreground ,outrun-fg :background ,outrun-current)
