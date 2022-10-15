@@ -1,3 +1,7 @@
+(set-window-scroll-bars (minibuffer-window) nil nil)
+(tool-bar-mode -1)
+(setq scroll-step 1)
+
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup/"))
       backup-by-copying t
@@ -6,11 +10,12 @@
       kept-old-versions 2)
 
 (setq gc-cons-threshold (expt 2 24))
-(tool-bar-mode -1)
+
+(defvar buffers-not-to-ignore '("*eww*") )
 
 ;;; Font
-;(add-to-list 'default-frame-alist
-;             '(font . "fantasque sans mono-14"))
+(add-to-list 'default-frame-alist
+             '(font . "iosevka term-14"))
 
 ;;; C-w to close buffer
 (global-unset-key (kbd "C-w"))
@@ -28,10 +33,24 @@
 (setq recentf-max-saved-items 25)
 
 ;;; Use spaces instead of tabs
-(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil
+              c-basic-offset 3
+              tab-width 3
+              c-default-style "stroustrup")
 
 ;;; Cua mode
 (cua-mode t)
+
+;;; Folding
+(use-package yafolding
+  :ensure t
+  :config (yafolding-mode t))
+(global-set-key (kbd "C-, C-s")  'yafolding-show-parent-element)
+(global-set-key (kbd "C-, C-h")  'yafolding-hide-parent-element)
+(global-set-key (kbd "C-, s")  'yafolding-show-element)
+(global-set-key (kbd "C-, h")  'yafolding-hide-element)
+(global-set-key (kbd "C-, C-S-s")  'yafolding-show-all)
+(global-set-key (kbd "C-, C-S-h")  'yafolding-hide-all)
 
 ;;; Set file's name as title
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
@@ -40,6 +59,10 @@
 (setq column-number-mode t)
 (setq global-line-number-mode t)
 (global-display-line-numbers-mode)
+
+;;; Comment/uncomment
+(global-set-key (kbd "C-S-/")  'comment-or-uncomment-region)
+
 ;;; Add melpa
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -67,7 +90,7 @@
   :bind (
       ("C->" . mc/mark-previous-like-this)
       ("C-<" . mc/mark-next-like-this)
-      ("C-<mouse-1>" . mc/add-cursor-on-click)
+      ("C-M-<mouse-1>" . mc/add-cursor-on-click)
       )
   )
 
@@ -85,7 +108,7 @@
 (use-package neotree
   :ensure t
   :bind ("C-b" . neotree-toggle)
-  :config (setq neo-theme (if (display-graphic-p) 'icons))
+  :config (setq neo-theme 'all-the-icons)
   )
 
 ;;; Move lines up/down
@@ -98,5 +121,12 @@
 ;;; Company
 (use-package company
   :ensure t
-  :config (add-hook 'after-init-hook 'global-company-mode))
+  :config (add-hook 'after-init-hook 'global-company-mode)
+  :config (setq company-minimum-prefix-length 2)
+)
 
+;;; LSP
+(use-package lsp-mode
+  :ensure t)
+(use-package lsp-pyright
+  :ensure t)
