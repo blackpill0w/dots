@@ -23,11 +23,17 @@ const Docking = Me.imports.docking;
 const Utils = Me.imports.utils;
 const AppIcons = Me.imports.appIcons;
 const Locations = Me.imports.locations;
+const Theming = Me.imports.theming;
 
 const DASH_ANIMATION_TIME = Dash.DASH_ANIMATION_TIME;
 const DASH_ITEM_LABEL_HIDE_TIME = Dash.DASH_ITEM_LABEL_HIDE_TIME;
 const DASH_ITEM_HOVER_TIMEOUT = Dash.DASH_ITEM_HOVER_TIMEOUT;
 const DASH_VISIBILITY_TIMEOUT = 3;
+
+const Labels = Object.freeze({
+    SHOW_MOUNTS: Symbol('show-mounts'),
+    FIRST_LAST_CHILD_WORKAROUND: Symbol('first-last-child-workaround'),
+});
 
 /**
  * Extend DashItemContainer
@@ -37,6 +43,13 @@ const DASH_VISIBILITY_TIMEOUT = 3;
  */
 var DockDashItemContainer = GObject.registerClass(
 class DockDashItemContainer extends Dash.DashItemContainer {
+    _init(position) {
+        super._init();
+
+        this.label?.add_style_class_name(Theming.PositionStyleClass[position]);
+        if (Docking.DockManager.settings.customThemeShrink)
+            this.label?.add_style_class_name('shrink');
+    }
 
     showLabel() {
         return AppIcons.itemShowLabel.call(this);
@@ -161,7 +174,7 @@ var DockDash = GObject.registerClass({
         this._dashContainer.add_actor(this._scrollView);
         this._scrollView.add_actor(this._box);
 
-        this._showAppsIcon = new AppIcons.DockShowAppsIcon();
+        this._showAppsIcon = new AppIcons.DockShowAppsIcon(this._position);
         this._showAppsIcon.show(false);
         this._showAppsIcon.icon.setIconSize(this.iconSize);
         this._showAppsIcon.x_expand = false;
@@ -289,9 +302,10 @@ var DockDash = GObject.registerClass({
         
         if (this._ensureActorVisibilityTimeoutId) {
             GLib.source_remove(this._ensureActorVisibilityTimeoutId);
-            this._ensureActorVisibilityTimeoutId = null;
+            delete this._ensureActorVisibilityTimeoutId;
         }
     }
+
 
     _onItemDragBegin() {
         return Dash.Dash.prototype._onItemDragBegin.call(this, ...arguments);
@@ -509,7 +523,7 @@ var DockDash = GObject.registerClass({
             this._itemMenuStateChanged(item, opened);
         });
 
-        const item = new DockDashItemContainer();
+        const item = new DockDashItemContainer(this._position);
         item.setChild(appIcon);
 
         appIcon.connect('notify::hover', a => this._ensureItemVisibility(a));
@@ -537,7 +551,12 @@ var DockDash = GObject.registerClass({
         appIcon.connect('notify::urgent', () => {
             if (appIcon.urgent) {
                 ensureActorVisibleInScrollView(this._scrollView, item);
-                this._requireVisibility();
+                const { settings } = Docking.DockManager;
+                const showDockUrgentNotify = settings.showDockUrgentNotify;
+                
+                if (showDockUrgentNotify) {
+                    this._requireVisibility();
+                }
             }
         });
 
@@ -792,9 +811,9 @@ var DockDash = GObject.registerClass({
             });
         }
 
-        this._signalsHandler.removeWithLabel('show-mounts');
+        this._signalsHandler.removeWithLabel(Labels.SHOW_MOUNTS);
         if (dockManager.removables) {
-            this._signalsHandler.addWithLabel('show-mounts',
+            this._signalsHandler.addWithLabel(Labels.SHOW_MOUNTS,
                 dockManager.removables, 'changed', this._queueRedisplay.bind(this));
             dockManager.removables.getApps().forEach(removable => {
                 if (!newApps.includes(removable))
@@ -922,7 +941,7 @@ var DockDash = GObject.registerClass({
                     x_align: this._isHorizontal ?
                         Clutter.ActorAlign.FILL : Clutter.ActorAlign.CENTER,
                     y_align: this._isHorizontal ?
-                       Clutter.ActorAlign.CENTER : Clutter.ActorAlign.FILL,
+                        Clutter.ActorAlign.CENTER : Clutter.ActorAlign.FILL,
                     width: this._isHorizontal ? -1 : this.iconSize,
                     height: this._isHorizontal ? this.iconSize : -1,
                     reactive: true,
@@ -1041,7 +1060,7 @@ var DockDash = GObject.registerClass({
 
     updateShowAppsButton() {
         const notifiedProperties = [];
-        this._signalsHandler.addWithLabel('first-last-child-workaround',
+        this._signalsHandler.addWithLabel(Labels.FIRST_LAST_CHILD_WORKAROUND,
             this._dashContainer, 'notify',
             (_obj, pspec) => notifiedProperties.push(pspec.name));
 
@@ -1051,7 +1070,7 @@ var DockDash = GObject.registerClass({
             this._dashContainer.set_child_above_sibling(this._showAppsIcon, null);
         }
 
-        this._signalsHandler.removeWithLabel('first-last-child-workaround');
+        this._signalsHandler.removeWithLabel(Labels.FIRST_LAST_CHILD_WORKAROUND);
 
         // This is indeed ugly, but we need to ensure that the last and first
         // visible widgets are re-computed by St, that is buggy because of a

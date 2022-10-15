@@ -33,6 +33,17 @@ const TransparencyMode = {
     DYNAMIC:  3
 };
 
+const Labels = Object.freeze({
+    TRANSPARENCY: Symbol('transparency'),
+});
+
+var PositionStyleClass = Object.freeze([
+    'top',
+    'right',
+    'bottom',
+    'left',
+]);
+
 /**
  * Manage theme customization and custom theme support
  */
@@ -253,6 +264,18 @@ var ThemeManager = class DashToDock_ThemeManager {
             return;
 
         let newStyle = '';
+ 	let position = Utils.getPosition(settings);
+
+	// obtain theme border settings
+        let themeNode = this._dash._background.get_theme_node();
+        let borderColor = themeNode.get_border_color(St.Side.TOP);
+        let borderWidth = themeNode.get_border_width(St.Side.TOP);
+
+	 // We're copying border and corner styles to left border and top-left
+        // corner, also removing bottom border and bottom-right corner styles
+        let borderInner = '';
+        let borderMissingStyle = '';
+
         this._border_radius   = settings.get_int('border-radius');
         this._floating_margin = settings.get_int('floating-margin'); 
         this._dock_position   = settings.get_enum('dock-position');
@@ -266,26 +289,41 @@ var ThemeManager = class DashToDock_ThemeManager {
         
         let pos_string = position_keys[this._dock_position];
 
+ 	if (this._rtl && (position != St.Side.RIGHT))
+            borderMissingStyle = 'border-right: ' + borderWidth + 'px solid ' +
+                   borderColor.to_string() + ';';
+        else if (!this._rtl && (position != St.Side.LEFT))
+            borderMissingStyle = 'border-left: ' + borderWidth + 'px solid ' +
+                   borderColor.to_string() + ';';
+
+        newStyle = borderMissingStyle;
+
+        if (newStyle) {
+            // I do call set_style possibly twice so that only the background gets the transition.
+            // The transition-property css rules seems to be unsupported
+            this._dash._background.set_style(newStyle);
+        }
+
         if(settings.forceStraightCorner || settings.extendHeight){
             newStyle = newStyle + `border-radius: 0px;`;
         }else {
             newStyle = newStyle + `border-radius: ${this._border_radius}px;`;
         }
-        
         this._dash._background.set_style(newStyle);
+       
 
         if(settings.extendHeight){
             let marginStyle = `margin-${pos_string}: 0px;`
-            this._dash.set_style(marginStyle);
+            this._dash.set_style(marginStyle);;
         } else {
             let marginStyle = `margin-${pos_string}: ${this._floating_margin}px;`;
             this._dash.set_style(marginStyle);
         }
         
 
-        let fixedTransparency = settings.get_enum('transparency-mode') == TransparencyMode.FIXED;
-        let defaultTransparency = settings.get_enum('transparency-mode') == TransparencyMode.DEFAULT;
-
+        // Customize background
+        const fixedTransparency = settings.transparencyMode === TransparencyMode.FIXED;
+        const defaultTransparency = settings.transparencyMode === TransparencyMode.DEFAULT;
         if (!defaultTransparency && !fixedTransparency) {
             this._transparency.enable();
         } else {
@@ -373,7 +411,7 @@ var Transparency = class DashToDock_Transparency {
             this._base_actor_style = "";
         }
 
-        this._signalsHandler.addWithLabel('transparency', [
+        this._signalsHandler.addWithLabel(Labels.TRANSPARENCY, [
             global.window_group,
             'actor-added',
             this._onWindowActorAdded.bind(this)
@@ -417,7 +455,7 @@ var Transparency = class DashToDock_Transparency {
     disable() {
         // ensure I never double-register/inject
         // although it should never happen
-        this._signalsHandler.removeWithLabel('transparency');
+        this._signalsHandler.removeWithLabel(Labels.TRANSPARENCY);
 
         for (let key of this._trackedWindows.keys())
             this._trackedWindows.get(key).forEach(id => {

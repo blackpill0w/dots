@@ -9,8 +9,10 @@
     <value value='5' nick='previews'/>
     <value value='6' nick='minimize-or-previews'/>
     <value value='7' nick='focus-or-previews'/>
-    <value value='8' nick='focus-minimize-or-previews'/>
-    <value value='9' nick='quit'/>
+    <value value='8' nick='focus-or-appspread'/>
+    <value value='9' nick='focus-minimize-or-previews'/>
+    <value value='10' nick='focus-minimize-or-appspread'/>
+    <value value='11' nick='quit'/>
   </enum>
   <enum id='org.gnome.shell.extensions.dash-to-dock-pop.scrollAction'>
     <value value='0' nick='do-nothing'/>
@@ -108,6 +110,11 @@
       <summary>Use application icon dominant color for the indicator color</summary>
       <description></description>
     </key>
+    <key type="b" name="hide-highlight">
+      <default>false</default>
+      <summary>Hide highlight</summary>
+      <description></description>
+    </key>
     <key type="b" name="customize-alphas">
       <default>false</default>
       <summary>Manually set the min and max opacity</summary>
@@ -162,6 +169,11 @@
       <default>false</default>
       <summary>Enable autohide in fullscreen mode.</summary>
       <description>Enable autohide in fullscreen mode.</description>
+    </key>
+    <key type="b" name="show-dock-urgent-notify">
+      <default>true</default>
+      <summary>Show dock for urgent notifications.</summary>
+      <description>Show dock when urgent notifications are received.</description>
     </key>
     <key type="b" name="dock-fixed">
       <default>false</default>
@@ -294,7 +306,7 @@
       <description>Consider volume, devices and trash as different application windows and not part of the file manager</description>
     </key>
     <key type="b" name="show-show-apps-button">
-      <default>true</default>
+      <default>false</default>
       <summary>Show applications button</summary>
       <description>Show applications button in the dash</description>
     </key>

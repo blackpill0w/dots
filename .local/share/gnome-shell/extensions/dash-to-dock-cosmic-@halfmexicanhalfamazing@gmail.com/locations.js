@@ -37,7 +37,10 @@ const NautilusFileOperations2Interface = '<node>\
 
 const NautilusFileOperations2ProxyInterface = Gio.DBusProxy.makeProxyWrapper(NautilusFileOperations2Interface);
 
-let locationId = 0;
+const Labels = Object.freeze({
+    LOCATION_WINDOWS: Symbol('location-windows'),
+    WINDOWS_CHANGED: Symbol('windows-changed'),
+});
 
 if (imports.system.version >= 17101) {
     Gio._promisify(Gio.File.prototype, 'query_info_async', 'query_info_finish');
@@ -314,7 +317,8 @@ var LocationAppInfo = GObject.registerClass({
             return null;
         }
     }
-      destroy() {
+
+    destroy() {
         this.location = null;
         this.icon = null;
         this.name = null;
@@ -382,7 +386,7 @@ class MountableVolumeAppInfo extends LocationAppInfo {
         this.disconnect(this._mountChanged);
         this.mount = null;
         this._signalsHandler.destroy();
-        
+
         super.destroy();
     }
 
@@ -773,6 +777,7 @@ function wrapWindowsBackedApp(shellApp) {
     const m = (...args) => shellApp._dtdData.methodInjections.add(shellApp, ...args);
     const p = (...args) => shellApp._dtdData.propertyInjections.add(shellApp, ...args);
 
+    // mi is Method injector, pi is Property injector
     shellApp._setDtdData({ mi: m, pi: p }, { public: false });
 
     m('get_state', () => shellApp._state ?? shellApp._getStateByWindows());
@@ -816,7 +821,7 @@ function wrapWindowsBackedApp(shellApp) {
 
         _setWindows: function (windows) {
             const oldState = this.state;
-            const oldWindows = this.get_windows().slice();
+            const oldWindows = this._windows.slice();
             const result = { windowsChanged: false, stateChanged: false };
             this._state = undefined;
 
@@ -1002,9 +1007,9 @@ function makeLocationApp(params) {
             if (!windowsChanged)
                 return;
 
-            this._signalConnections.removeWithLabel('location-windows');
+            this._signalConnections.removeWithLabel(Labels.LOCATION_WINDOWS);
             windows.forEach(w =>
-                this._signalConnections.addWithLabel('location-windows', w,
+                this._signalConnections.addWithLabel(Labels.LOCATION_WINDOWS, w,
                     'notify::user-time', () => {
                         if (w != this._windows[0])
                             this._windowsOrderChanged();
@@ -1038,16 +1043,23 @@ function wrapFileManagerApp() {
     wrapWindowsBackedApp(fileManagerApp);
 
     const { removables, trash } = Docking.DockManager.getDefault();
-    fileManagerApp._signalConnections.addWithLabel('windowsChanged',
+    fileManagerApp._signalConnections.addWithLabel(Labels.WINDOWS_CHANGED,
         fileManagerApp, 'windows-changed', () => {
             fileManagerApp.stop_emission_by_name('windows-changed');
             // Let's wait for the location app to take control before of us
-                locationId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
-                fileManagerApp._sources.delete(locationId);
+            const id = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
+                fileManagerApp._sources.delete(id);
                 fileManagerApp._updateWindows();
                 return GLib.SOURCE_REMOVE;
             });
-            fileManagerApp._sources.add(locationId);
+            fileManagerApp._sources.add(id);
+        });
+
+    fileManagerApp._signalConnections.add(global.workspaceManager,
+        'workspace-switched', () => {
+            fileManagerApp._signalConnections.blockWithLabel(Labels.WINDOWS_CHANGED);
+            fileManagerApp.emit('windows-changed');
+            fileManagerApp._signalConnections.unblockWithLabel(Labels.WINDOWS_CHANGED);
         });
 
     if (removables) {
@@ -1068,9 +1080,9 @@ function wrapFileManagerApp() {
         const windows = originalGetWindows.call(this).filter(w =>
             !locationWindows.includes(w));
 
-        this._signalConnections.blockWithLabel('windowsChanged');
+        this._signalConnections.blockWithLabel(Labels.WINDOWS_CHANGED);
         this._setWindows(windows);
-        this._signalConnections.unblockWithLabel('windowsChanged');
+        this._signalConnections.unblockWithLabel(Labels.WINDOWS_CHANGED);
     };
 
     fileManagerApp._mi('toString', defaultToString =>
@@ -1102,7 +1114,7 @@ var Trash = class DashToDock_Trash {
             return;
 
         this._trashApp = makeLocationApp({
-             appInfo: new TrashAppInfo(new Gio.Cancellable()),
+            appInfo: new TrashAppInfo(new Gio.Cancellable()),
             fallbackIconName: FALLBACK_TRASH_ICON,
         });
     }
@@ -1197,10 +1209,10 @@ var Removables = class DashToDock_Removables {
     _onVolumeAdded(volume) {
         Removables.initVolumePromises(volume);
 
-        //if (!Docking.DockManager.settings.showMountsNetwork &&
-        //    volume.get_identifier('class') == 'network') {
-        //    return;
-        //}
+        if (!Docking.DockManager.settings.showMountsNetwork &&
+            volume.get_identifier('class') == 'network') {
+            return;
+        }
 
         const mount = volume.get_mount();
         if (mount) {

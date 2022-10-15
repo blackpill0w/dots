@@ -222,24 +222,34 @@ var Settings = GObject.registerClass({
         });
         
         this._notebook = this._builder.get_object('settings_notebook');
-        this.widget.set_child(this._notebook);
+
+        if (SHELL_VERSION >= 42) {
+            this.widget = this._notebook;
+        } else {
+            this.widget = new Gtk.ScrolledWindow({
+                hscrollbar_policy: Gtk.PolicyType.NEVER,
+                vscrollbar_policy: Gtk.PolicyType.AUTOMATIC,
+            });
+            this.widget.set_child(this._notebook);
+        }
 
         // Set a reasonable initial window height
         this.widget.connect('realize', () => {
             const rootWindow = this.widget.get_root();
             rootWindow.set_size_request(-1, 850);
-            rootWindow.connect('close-request', () => this._onWindowsClosed())
-            //removeTimeouts(rootWindow);
-            if (SHELL_VERSION >= 42)
-                this.widget.set_size_request(-1, 950);
+            rootWindow.connect('close-request', () => this._onWindowsClosed());
         });
 
         // Timeout to delay the update of the settings
         this._dock_size_timeout = 0;
         this._icon_size_timeout = 0;
         this._opacity_timeout = 0;
-        this._border_radius_timeout = 0;
-        this._floating_margin_timeout = 0;
+
+        if (Config.PACKAGE_VERSION.split('.')[0] < 42) {
+            // Remove this when we won't support earlier versions
+            this._builder.get_object('shrink_dash_label1').label =
+                __('Show favorite applications');
+        }
 
         this._monitorsConfig = new MonitorsConfig();
         this._bindSettings();
@@ -375,13 +385,11 @@ var Settings = GObject.registerClass({
         // Avoid settings the size continuously
         if (this._dock_size_timeout > 0)
             GLib.source_remove(this._dock_size_timeout);
-        const id = this._dock_size_timeout = GLib.timeout_add(
+        this._dock_size_timeout = GLib.timeout_add(
             GLib.PRIORITY_DEFAULT, SCALE_UPDATE_TIMEOUT, () => {
-               if (id === this._dock_size_timeout) {
-                    this._settings.set_double('height-fraction', scale.get_value());
-                    this._dock_size_timeout = 0;
-                    return GLib.SOURCE_REMOVE;
-                }
+                this._settings.set_double('height-fraction', scale.get_value());
+                this._dock_size_timeout = 0;
+                return GLib.SOURCE_REMOVE;
             });
     }
     	
@@ -420,14 +428,14 @@ var Settings = GObject.registerClass({
         // Avoid settings the size consinuosly
 
         if (this._icon_size_timeout > 0)
-           GLib.source_remove(this._icon_size_timeout);
+            GLib.source_remove(this._icon_size_timeout);
         this._icon_size_timeout = GLib.timeout_add(
-           GLib.PRIORITY_DEFAULT, SCALE_UPDATE_TIMEOUT, () => {
-              log(scale.get_value());
-              this._settings.set_int('dash-max-icon-size', scale.get_value());
-               this._icon_size_timeout = 0;
+            GLib.PRIORITY_DEFAULT, SCALE_UPDATE_TIMEOUT, () => {
+                log(scale.get_value());
+                this._settings.set_int('dash-max-icon-size', scale.get_value());
+                this._icon_size_timeout = 0;
                 return GLib.SOURCE_REMOVE;
-           });
+            });
     }
 
    
@@ -437,7 +445,17 @@ var Settings = GObject.registerClass({
     preview_size_scale_value_changed_cb(scale) {
         this._settings.set_double('preview-size-scale', scale.get_value());
     }
-
+    custom_opacity_scale_value_changed_cb(scale) {
+        // Avoid settings the opacity consinuosly as it's change is animated
+        if (this._opacity_timeout > 0)
+            GLib.source_remove(this._opacity_timeout);
+        this._opacity_timeout = GLib.timeout_add(
+            GLib.PRIORITY_DEFAULT, SCALE_UPDATE_TIMEOUT, () => {
+                this._settings.set_double('background-opacity', scale.get_value());
+                this._opacity_timeout = 0;
+                return GLib.SOURCE_REMOVE;
+            });
+    }
     min_opacity_scale_value_changed_cb(scale) {
         // Avoid settings the opacity consinuosly as it's change is animated
         if (this._opacity_timeout > 0)
@@ -462,6 +480,18 @@ var Settings = GObject.registerClass({
             });
     }
 
+    all_windows_radio_button_toggled_cb(button) {
+        if (button.get_active())
+            this._settings.set_enum('intellihide-mode', 0);
+    }
+    focus_application_windows_radio_button_toggled_cb(button) {
+        if (button.get_active())
+            this._settings.set_enum('intellihide-mode', 1);
+    }
+    maximized_windows_radio_button_toggled_cb(button) {
+        if (button.get_active())
+            this._settings.set_enum('intellihide-mode', 2);
+    }
 
     always_on_top_radio_button_toggled_cb(button) {
         if (button.get_active())
@@ -507,8 +537,7 @@ var Settings = GObject.registerClass({
             dockMonitorCombo.set_active(primaryIndex);
     }
 
-   _bindSettings() {
-   
+    _bindSettings() {
         // Position and size panel
         this._updateMonitorsSettings();
         this._monitorsConfig.connect('updated', () => this._updateMonitorsSettings());
@@ -641,6 +670,11 @@ var Settings = GObject.registerClass({
                 'sensitive',
                 Gio.SettingsBindFlags.GET);
 
+            this._settings.bind('autohide',
+                this._builder.get_object('show_dock_urgent_notify_checkbutton'),
+                'sensitive',
+                Gio.SettingsBindFlags.GET);
+
             this._settings.bind('require-pressure-to-show',
                 this._builder.get_object('show_timeout_spinbutton'),
                 'sensitive',
@@ -661,7 +695,7 @@ var Settings = GObject.registerClass({
             dialog.connect('response', (dialog, id) => {
                 if (id == 1) {
                     // restore default settings for the relevant keys
-                    let keys = ['intellihide', 'autohide', 'intellihide-mode', 'autohide-in-fullscreen', 'require-pressure-to-show',
+                    let keys = ['intellihide', 'autohide', 'intellihide-mode', 'autohide-in-fullscreen', 'show-dock-urgent-notify', 'require-pressure-to-show',
                         'animation-time', 'show-delay', 'hide-delay', 'pressure-threshold'];
                     keys.forEach(function (val) {
                         this._settings.set_value(val, this._settings.get_default_value(val));
@@ -709,6 +743,7 @@ var Settings = GObject.registerClass({
             return value + ' px';
         });
         this._builder.get_object('preview_size_scale').set_value(this._settings.get_double('preview-size-scale'));
+        this._builder.get_object('preview_size_scale').set_range(0.0, 0.4);
         
         this._builder.get_object('') 
 
@@ -717,7 +752,7 @@ var Settings = GObject.registerClass({
             // Flip value position: this is not done automatically
             dock_size_scale.set_value_pos(Gtk.PositionType.LEFT);
             icon_size_scale.set_value_pos(Gtk.PositionType.LEFT);
-            // I suppose due to a bug, having a more than one mark and one above a value of 100i
+            // I suppose due to a bug, having a more than one mark and one above a value of 100
             // makes the rendering of the marks wrong in rtl. This doesn't happen setting the scale as not flippable
             // and then manually inverting it
             icon_size_scale.set_flippable(false);
@@ -992,7 +1027,8 @@ var Settings = GObject.registerClass({
         this._settings.bind('apply-custom-theme', this._builder.get_object('customize_theme'), 'sensitive', Gio.SettingsBindFlags.INVERT_BOOLEAN | Gio.SettingsBindFlags.GET);
         this._settings.bind('apply-custom-theme', this._builder.get_object('builtin_theme_switch'), 'active', Gio.SettingsBindFlags.DEFAULT);
         this._settings.bind('custom-theme-shrink', this._builder.get_object('shrink_dash_switch'), 'active', Gio.SettingsBindFlags.DEFAULT);
-
+        this._settings.bind('hide-highlight', this._builder.get_object('hide_highlight_switch'), 'active', Gio.SettingsBindFlags.DEFAULT);
+        
         // Running indicators
         this._builder.get_object('running_indicators_combo').set_active(
             this._settings.get_enum('running-indicator-style')
@@ -1063,7 +1099,6 @@ var Settings = GObject.registerClass({
                 this._builder.get_object('dot_border_width_spin_button'),
                 'value',
                 Gio.SettingsBindFlags.DEFAULT);
-
 
             dialog.connect('response', (dialog, id) => {
                 // remove the settings box so it doesn't get destroyed;
@@ -1250,3 +1285,4 @@ if (!Me) {
 	
     loop.run();
 }
+

@@ -88,8 +88,7 @@ var AppIconIndicator = class DashToDock_AppIconIndicator {
 
             case RunningIndicatorStyle.METRO:
                 runningIndicator = new RunningIndicatorMetro(source);
-                break;
-            
+            break;
             case RunningIndicatorStyle.BINARY:
                 runningIndicator = new RunningIndicatorBinary(source);
                 break;
@@ -189,6 +188,7 @@ var RunningIndicatorBase = class DashToDock_RunningIndicatorBase extends Indicat
     _restoreDefaultDot() {
         this._source._dot.opacity = 255;
     }
+    
 
     _enableBacklight() {
 
@@ -304,7 +304,8 @@ var RunningIndicatorDots = class DashToDock_RunningIndicatorDots extends Running
                    'custom-theme-customize-running-dots',
                    'unity-backlit-items',
                    'apply-glossy-effect',
-                   'running-indicator-dominant-color'];
+                   'running-indicator-dominant-color',
+                   'border-radius'];
 
         keys.forEach(function(key) {
             this._signalsHandler.add(
@@ -418,7 +419,7 @@ var RunningIndicatorDots = class DashToDock_RunningIndicatorDots extends Running
         Clutter.cairo_set_source_color(cr, this._borderColor);
 
         // draw for the bottom case:
-        cr.translate((this._width - (2*n)*this._radius - (n-1)*this._spacing)/2, this._height - this._padding);
+        cr.translate((this._width - (2*n)*this._radius - (n-1)*this._spacing)/2, this._height - this._padding - 2); ////////////////
         for (let i = 0; i < n; i++) {
             cr.newSubPath();
             cr.arc((2*i+1)*this._radius + i*this._spacing, -this._radius - this._borderWidth/2, this._radius, 0, 2*Math.PI);
@@ -649,7 +650,7 @@ var RunningIndicatorBinary = class DashToDock_RunningIndicatorBinary extends Run
             let size =  Math.max(this._width/11, this._borderWidth);
             let padding = this._borderWidth;
             let spacing = Math.ceil(this._width/18);
-            let yOffset = this._height - size + 2.5;
+            let yOffset = this._height - size + 5;
             let binaryValue = String("0000" + (n >>> 0).toString(2)).slice(-4);
 
             cr.setLineWidth(this._borderWidth);

@@ -762,7 +762,6 @@
                                 <property name="draw-value">1</property>
                                 <property name="hexpand">True</property>
                                 <property name="restrict-to-fill-level">False</property>
-                                <property name="show-fill-level">True</property>
                                 <property name="valign">baseline</property>
                                 <property name="value-pos">right</property>
                                 <signal name="value-changed" handler="dock_size_scale_value_changed_cb"/>
@@ -870,9 +869,9 @@
                                 <property name="adjustment">preview_size_adjustment</property>
                                 <property name="digits">2</property>
                                 <property name="draw-value">1</property>
-                                <property name="fill-level">1.7976931348623157e+308</property>
+                                <property name="fill-level">.4</property>
                                 <property name="hexpand">True</property>
-                                <property name="restrict-to-fill-level">False</property>
+                                <property name="restrict-to-fill-level">True</property>
                                 <property name="valign">baseline</property>
                                 <property name="value-pos">right</property>
                                 <!-- <signal name="format-value" handler="preview_size_scale_format_value_cb" /> -->
@@ -1805,6 +1804,30 @@
                                 </layout>
                               </object>
                             </child>
+                            <child>
+                              <object class="GtkLabel" id="hide_highlight_label">
+                                <property name="hexpand">True</property>
+                                <property name="label">Hide Hover Highlight</property>
+                                <layout>
+                                  <property name="column">2</property>
+                                  <property name="column-span">1</property>
+                                  <property name="row">0</property>
+                                  <property name="row-span">1</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkSwitch" id="hide_highlight_switch">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <layout>
+                                  <property name="column">3</property>
+                                  <property name="column-span">1</property>
+                                  <property name="row">0</property>
+                                  <property name="row-span">1</property>
+                                </layout>
+                              </object>
+                            </child>
                           </object>
                         </property>
                       </object>
@@ -2081,7 +2104,7 @@
                                 <property name="round-digits">0</property>
                                 <property name="value-pos">right</property>
                                 <!-- <signal name="format-value" handler="custom_radius_scale_format_value_cb" swapped="no" /> -->
-                                <signal name="value-changed" handler="custom_radius_scale_value_changed_cb" swapped="no"/>
+                                <signal name="value-changed" handler="custom_radius_scale_value_changed_cb"/>
                               </object>
                             </child>
                           </object>
@@ -2120,7 +2143,7 @@
                                 <property name="round-digits">0</property>
                                 <property name="value-pos">right</property>
                                 <!-- <signal name="format-value" handler="custom_margin_scale_format_value_cb" swapped="no"/> -->
-                                <signal name="value-changed" handler="custom_margin_scale_value_changed_cb" swapped="no"/>
+                                <signal name="value-changed" handler="custom_margin_scale_value_changed_cb"/>
                               </object>
                             </child>
                           </object>
@@ -2689,6 +2712,19 @@ See the &lt;a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html"&gt;G
                           <property name="column">0</property>
                           <property name="column-span">2</property>
                           <property name="row">2</property>
+                          <property name="column-span">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="show_dock_urgent_notify_checkbutton">
+                        <property name="label" translatable="yes">Show dock for urgent notifications</property>
+                        <property name="margin_top">12</property>
+
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">4</property>
+                          <property name="column-span">2</property>
                         </layout>
                       </object>
                     </child>
@@ -2893,6 +2929,9 @@ See the &lt;a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html"&gt;G
             </child>
           </object>
         </property>
+        <child type="label_item">
+          <placeholder/>
+        </child>
       </object>
     </child>
   </object>
