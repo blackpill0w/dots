@@ -11,7 +11,25 @@
 
 (setq gc-cons-threshold (expt 2 24))
 
-(defvar buffers-not-to-ignore '("*eww*") )
+;;; Changing buffers
+(global-set-key (kbd "C-<tab>") 'next-buffer)
+(global-set-key (kbd "C-<iso-lefttab>") 'previous-buffer)
+
+;;; Hide useless buffers when cycling through buffers
+(defvar buffers-not-to-ignore '("*shell*" "*ielm*" "*eww*"))
+(set-frame-parameter (selected-frame) 'buffer-predicate
+                     (lambda (buf) (or
+                                    (member (buffer-name buf) buffers-not-to-ignore)
+                                    (not (string-match-p "^*" (buffer-name buf)))
+                                    )))
+
+;;; Remove trailing spaces on save
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
+
+;;; Whitespace
+(global-whitespace-mode 1)
+(setq whitespace-line-column 5000)
 
 ;;; Font
 (add-to-list 'default-frame-alist
@@ -33,10 +51,20 @@
 (setq recentf-max-saved-items 25)
 
 ;;; Use spaces instead of tabs
+
+; Stroustrup style without namespace indentation
+(c-add-style "modified-stroustrup"
+             '("stroustrup"
+               (c-basic-offset . 3)
+               (tab-width . 3)
+               (c-offsets-alist
+                (innamespace . 0)
+                )))
+
 (setq-default indent-tabs-mode nil
               c-basic-offset 3
               tab-width 3
-              c-default-style "stroustrup")
+              c-default-style "modified-stroustrup")
 
 ;;; Cua mode
 (cua-mode t)
@@ -78,6 +106,8 @@
 
 ;;; Themes
 (use-package dracula-theme
+  :ensure t)
+(use-package nord-theme
   :ensure t)
 
 (load-theme 'outrun t)
@@ -130,3 +160,10 @@
   :ensure t)
 (use-package lsp-pyright
   :ensure t)
+
+;;; Lex
+(use-package bison-mode
+  :ensure t)
+
+;;; Other
+(global-set-key (kbd "C-, C-e")  'flymake-show-buffer-diagnostics)
