@@ -161,6 +161,10 @@
 (use-package lsp-pyright
   :ensure t)
 
+;;; CMake
+(use-package cmake-mode
+  :ensure t)
+
 ;;; Lex
 (use-package bison-mode
   :ensure t)
