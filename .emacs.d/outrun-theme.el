@@ -110,7 +110,7 @@ The theme has to be reloaded after changing anything in this group."
                (shadow :foreground ,outrun-comment)
                (success :foreground ,outrun-green)
                (toutrunltip :foreground ,outrun-fg :background ,outrun-current)
-               (trailing-whitespace :background ,outrun-orange)
+               (trailing-whitespace :background ,outrun-orange :foreground ,outrun-bg)
                (vertical-border :foreground ,bg2)
                (warning :foreground ,outrun-orange)
                ;; syntax / font-lock

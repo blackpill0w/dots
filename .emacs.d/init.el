@@ -105,6 +105,16 @@
        use-package-expand-minimally t))
 
 ;;; Themes
+
+;; Disable all previous themes before changing themes
+(defun disable-all-themes ()
+  "disable all active themes."
+  (dolist (i custom-enabled-themes)
+    (disable-theme i)))
+
+(defadvice load-theme (before disable-themes-first activate)
+  (disable-all-themes))
+
 (use-package dracula-theme
   :ensure t)
 (use-package nord-theme
