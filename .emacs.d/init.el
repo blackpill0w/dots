@@ -1,6 +1,9 @@
-(set-window-scroll-bars (minibuffer-window) nil nil)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(setq inhibit-startup-screen t)
 (tool-bar-mode -1)
 (setq scroll-step 1)
+(set-window-scroll-bars (minibuffer-window) nil nil)
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup/"))
@@ -11,12 +14,22 @@
 
 (setq gc-cons-threshold (expt 2 24))
 
+(when (and (fboundp 'native-comp-available-p) (native-comp-available-p))
+  (progn
+    (setq native-comp-async-report-warnings-errors nil)
+    (setq native-comp-deferred-compilation t)
+    (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
+    (setq package-native-compile t)))
+
 ;;; Changing buffers
 (global-set-key (kbd "C-<tab>") 'next-buffer)
 (global-set-key (kbd "C-<iso-lefttab>") 'previous-buffer)
 
+;;; Terminal
+(global-set-key (kbd "C-t") (lambda() (interactive) (term "/usr/bin/bash")))
+
 ;;; Hide useless buffers when cycling through buffers
-(defvar buffers-not-to-ignore '("*shell*" "*ielm*" "*eww*"))
+(defvar buffers-not-to-ignore '("*shell*" "*ielm*" "*eww*" "*terminal*" "*ansi-term*" "*eshell*"))
 (set-frame-parameter (selected-frame) 'buffer-predicate
                      (lambda (buf) (or
                                     (member (buffer-name buf) buffers-not-to-ignore)
@@ -33,15 +46,15 @@
 
 ;;; Font
 (add-to-list 'default-frame-alist
-             '(font . "iosevka term-14"))
+             '(font . "iosevka term-13"))
 
 ;;; C-w to close buffer
 (global-unset-key (kbd "C-w"))
 (global-set-key (kbd "C-w") 'kill-current-buffer)
 
 ;;; Move arround split windows
-(global-set-key (kbd "C-, <left>")  'windmove-left)
 (global-set-key (kbd "C-, <right>") 'windmove-right)
+(global-set-key (kbd "C-, <left>")  'windmove-left)
 (global-set-key (kbd "C-, <up>")    'windmove-up)
 (global-set-key (kbd "C-, <down>")  'windmove-down)
 
@@ -69,17 +82,6 @@
 ;;; Cua mode
 (cua-mode t)
 
-;;; Folding
-(use-package yafolding
-  :ensure t
-  :config (yafolding-mode t))
-(global-set-key (kbd "C-, C-s")  'yafolding-show-parent-element)
-(global-set-key (kbd "C-, C-h")  'yafolding-hide-parent-element)
-(global-set-key (kbd "C-, s")  'yafolding-show-element)
-(global-set-key (kbd "C-, h")  'yafolding-hide-element)
-(global-set-key (kbd "C-, C-S-s")  'yafolding-show-all)
-(global-set-key (kbd "C-, C-S-h")  'yafolding-hide-all)
-
 ;;; Set file's name as title
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 
@@ -90,6 +92,7 @@
 
 ;;; Comment/uncomment
 (global-set-key (kbd "C-S-/")  'comment-or-uncomment-region)
+(global-set-key (kbd "C-S-:")  'comment-or-uncomment-region)
 
 ;;; Add melpa
 (require 'package)
@@ -102,9 +105,23 @@
   (package-install 'use-package))
 (eval-and-compile
   (setq use-package-always-ensure t
-       use-package-expand-minimally t))
+        use-package-expand-minimally t))
+
+;;; Folding
+(use-package yafolding
+  :ensure t
+  :config (yafolding-mode t))
+(global-set-key (kbd "C-, C-s")  'yafolding-show-parent-element)
+(global-set-key (kbd "C-, C-h")  'yafolding-hide-parent-element)
+(global-set-key (kbd "C-, s")  'yafolding-show-element)
+(global-set-key (kbd "C-, h")  'yafolding-hide-element)
+(global-set-key (kbd "C-, C-S-s")  'yafolding-show-all)
+(global-set-key (kbd "C-, C-S-h")  'yafolding-hide-all)
 
 ;;; Themes
+
+;; Add themes directory
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
 
 ;; Disable all previous themes before changing themes
 (defun disable-all-themes ()
@@ -145,11 +162,19 @@
   :ensure t)
 
 ;;; Side tree
-(use-package neotree
+(use-package treemacs
   :ensure t
-  :bind ("C-b" . neotree-toggle)
-  :config (setq neo-theme 'all-the-icons)
+  :bind ("C-b" . treemacs)
+  :config
+  (progn
+    (setq treemacs-show-cursor nil)
+    )
   )
+
+(use-package treemacs-all-the-icons
+  :ensure t
+  :config
+  (treemacs-load-theme "all-the-icons"))
 
 ;;; Move lines up/down
 (use-package drag-stuff
@@ -173,11 +198,35 @@
 
 ;;; CMake
 (use-package cmake-mode
-  :ensure t)
+  :ensure t
+  :mode ("CMakeLists.txt"  . cmake-mode))
+
+;;; Meson
+(use-package meson-mode
+  :ensure t
+  :mode ("meson.build"  . meson-mode))
 
 ;;; Lex
 (use-package bison-mode
   :ensure t)
+
+;;; Automatically refreshes the buffer for changes outside of Emacs
+(use-package autorevert
+  :ensure nil
+  :config
+  (global-auto-revert-mode +1)
+  (setq auto-revert-interval 2
+        auto-revert-check-vc-info t
+        global-auto-revert-non-file-buffers t
+        auto-revert-verbose nil))
+
+;;; Web mode
+(use-package web-mode
+  :mode (("\\.html?\\'" . web-mode)
+         ("\\.css\\'"   . web-mode)
+         ("\\.jsx?\\'"  . web-mode)
+         ("\\.tsx?\\'"  . web-mode)
+         ("\\.json\\'"  . web-mode)))
 
 ;;; Other
 (global-set-key (kbd "C-, C-e")  'flymake-show-buffer-diagnostics)

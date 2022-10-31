@@ -94,7 +94,7 @@ The theme has to be reloaded after changing anything in this group."
                (minibuffer-prompt
                 ,@(if outrun-alternate-mode-line-and-minibuffer
                       (list :weight 'normal :foreground outrun-fg)
-                    (list  :foreground outrun-pink :background outrun-bg)))
+                    (list  :foreground outrun-pink)))
                (mode-line :background ,outrun-current
                           :box ,outrun-current :inverse-video nil
                           ,@(if outrun-alternate-mode-line-and-minibuffer
@@ -103,7 +103,7 @@ The theme has to be reloaded after changing anything in this group."
                (mode-line-inactive
                 :background ,outrun-bg :inverse-video nil
                 ,@(if outrun-alternate-mode-line-and-minibuffer
-                      (list :foreground outrun-comment :box outrun-bg)
+                      (list :foreground outrun-comment)
                     (list :foreground fg4 :box bg2)))
                (read-multiple-choice-face :inherit completions-first-difference)
                (region :background ,outrun-current)
@@ -394,8 +394,7 @@ The theme has to be reloaded after changing anything in this group."
                ;; Highlights the background of the match.
                (ivy-minibuffer-match-face-1 :background ,outrun-current)
                ;; Highlights the first matched group.
-               (ivy-minibuffer-match-face-2 :background ,outrun-green
-                                            :foreground ,outrun-bg)
+               (ivy-minibuffer-match-face-2 :foreground ,outrun-green)
                ;; Highlights the second matched group.
                (ivy-minibuffer-match-face-3 :background ,outrun-yellow
                                             :foreground ,outrun-bg)
