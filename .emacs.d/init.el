@@ -6,6 +6,7 @@
 (set-window-scroll-bars (minibuffer-window) nil nil)
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
+
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup/"))
       backup-by-copying t
       delete-old-versions t
@@ -24,6 +25,21 @@
 ;;; Changing buffers
 (global-set-key (kbd "C-<tab>") 'next-buffer)
 (global-set-key (kbd "C-<iso-lefttab>") 'previous-buffer)
+
+;;; Rename file and buffer
+(defun rename-file-and-buffer ()
+  "Rename the current buffer and file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (message "Buffer is not visiting a file!")
+      (let ((new-name (read-file-name "New name: " filename)))
+        (cond
+         ((vc-backend filename) (vc-rename-file filename new-name))
+         (t
+          (rename-file filename new-name t)
+          (set-visited-file-name new-name t t)))))))
+(global-set-key (kbd "C-x C-S-s") 'rename-file-and-buffer)
 
 ;;; Terminal
 (global-set-key (kbd "C-t") (lambda() (interactive) (term "/usr/bin/bash")))

@@ -49,7 +49,7 @@ The theme has to be reloaded after changing anything in this group."
 ;; Assigment form: VARIABLE COLOR [256-COLOR [TTY-COLOR]]
 (let ((colors '(;; Upstream theme color
                 (mayukai-dark-bg            "#0d1016" "unspecified-bg" "unspecified-bg") ; official background
-                (mayukai-dark-fg            "#dadbc0" "#dadbc0" "brightwhite") ; official foreground
+                (mayukai-dark-fg            "#dfefd0" "#dadbc0" "brightwhite") ; official foreground
                 (mayukai-dark-current       "#44475a" "#303030" "brightblack") ; official current-line/selection
                 (mayukai-dark-comment       "#5c6773" "#5c6773" "blue")        ; official comment
                 (mayukai-dark-cyan          "#1ea8fc" "#1ea8fc" "cyan")  ; official cyan
@@ -61,8 +61,9 @@ The theme has to be reloaded after changing anything in this group."
                 (mayukai-dark-purple        "#D86BFF" "#A875FF" "brightmagenta") ; official purple
                 (mayukai-dark-red           "#ff5555" "#ff8787" "red")         ; official red
                 (mayukai-dark-yellow        "#ffff50" "#ffff87" "yellow")      ; official yellow
+                (mayukai-dark-linenum       "#3d424d" "#3d424d" "brightblack")
                 ;; Other colors
-                (bg2             "#070618" "#12ff12" "brightblack")
+                (bg2             "#0d1016" "#0d1016" "brightblack")
                 (bg3             "#464752" "#262626" "brightblack")
                 (bg4             "#565761" "#444444" "brightblack")
                 (fg2             "#e2e2dc" "#e4e4e4" "brightwhite")
@@ -85,8 +86,8 @@ The theme has to be reloaded after changing anything in this group."
                (link :foreground ,mayukai-dark-cyan :underline t)
                (linum :slant italic :foreground ,mayukai-dark-comment :background ,mayukai-dark-bg)
                (line-number :slant italic :foreground ,mayukai-dark-comment :background ,mayukai-dark-bg)
-               (line-number-current-line :slant italic :foreground ,mayukai-dark-purple :background ,mayukai-dark-bg)
-               (nlinum-current-line :slant italic :foreground ,mayukai-dark-purple :background ,mayukai-dark-bg)
+               (line-number-current-line :slant italic :foreground ,mayukai-dark-linenum :background ,mayukai-dark-bg)
+               (nlinum-current-line :slant italic :foreground ,mayukai-dark-linenum :background ,mayukai-dark-bg)
                (match :background ,mayukai-dark-yellow :foreground ,mayukai-dark-bg)
                (menu :background ,mayukai-dark-current :inverse-video nil
                      ,@(if mayukai-dark-alternate-mode-line-and-minibuffer
@@ -683,10 +684,10 @@ The theme has to be reloaded after changing anything in this group."
                (selectrum-secondary-highlight :foreground ,mayukai-dark-green)
                ;; show-paren
                (show-paren-match-face :background unspecified
-                                      :foreground ,mayukai-dark-cyan
+                                      :foreground ,mayukai-dark-purple
                                       :weight bold)
                (show-paren-match :background unspecified
-                                 :foreground ,mayukai-dark-cyan
+                                 :foreground ,mayukai-dark-purple
                                  :weight bold)
                (show-paren-match-expression :inherit match)
                (show-paren-mismatch :inherit font-lock-warning-face)
