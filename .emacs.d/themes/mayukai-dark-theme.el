@@ -1,4 +1,4 @@
-;;; outrun-theme.el --- Outrun Theme
+;;; mayukai-dark-theme.el --- Mayukai-dark Theme
 
 ;;; Code:
 (deftheme mayukai-dark)
@@ -55,7 +55,7 @@ The theme has to be reloaded after changing anything in this group."
                 (mayukai-dark-cyan          "#1ea8fc" "#1ea8fc" "cyan")  ; official cyan
                 (mayukai-dark-brightcyan    "#70f0ff" "#70f0ff" "brightcyan")  ; official cyan
                 (mayukai-dark-green         "#C2F94C" "#C2F94C" "green")       ; official green
-                (mayukai-dark-lightgreen         "#95e6cb" "#95e6cb" "lightgreen")       ; official green
+                (mayukai-dark-lightgreen    "#95e6cb" "#95e6cb" "lightgreen")       ; official green
                 (mayukai-dark-orange        "#ffa759" "#ffa759" "brightred")   ; official orange
                 (mayukai-dark-pink          "#D86BFF" "#D86BFF" "magenta")     ; official pink
                 (mayukai-dark-purple        "#D86BFF" "#A875FF" "brightmagenta") ; official purple

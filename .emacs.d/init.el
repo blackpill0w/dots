@@ -170,7 +170,9 @@
 ;;; Project manager
 (use-package projectile
   :ensure t
-  :config (define-key projectile-mode-map (kbd "C-p") 'projectile-command-map)
+  :config
+  (define-key projectile-mode-map (kbd "C-p") 'projectile-command-map)
+  (projectile-global-mode)
   )
 
 ;;; Icons
@@ -210,6 +212,10 @@
 (use-package lsp-mode
   :ensure t)
 (use-package lsp-pyright
+  :ensure t)
+
+;;; Rust
+(use-package rust-mode
   :ensure t)
 
 ;;; CMake

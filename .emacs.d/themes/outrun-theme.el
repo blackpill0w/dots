@@ -773,11 +773,13 @@ The theme has to be reloaded after changing anything in this group."
                (web-mode-function-name-face :inherit font-lock-function-name-face)
                (web-mode-html-attr-name-face :foreground ,outrun-purple)
                (web-mode-html-attr-value-face :foreground ,outrun-green)
-               (web-mode-html-tag-face :foreground ,outrun-pink :weight bold)
+               (web-mode-html-tag-face :foreground ,outrun-pink)
                (web-mode-keyword-face :foreground ,outrun-pink)
                (web-mode-string-face :foreground ,outrun-cyan)
                (web-mode-type-face :inherit font-lock-type-face)
                (web-mode-warning-face :inherit font-lock-warning-face)
+               (web-mode-current-element-highlight-face :foreground ,outrun-cyan)
+               (web-mode-current-column-highlight-face :background ,outrun-cyan)
                ;; which-func
                (which-func :inherit font-lock-function-name-face)
                ;; which-key
