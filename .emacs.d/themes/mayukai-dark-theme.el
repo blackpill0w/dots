@@ -112,7 +112,7 @@ The theme has to be reloaded after changing anything in this group."
                (shadow :foreground ,mayukai-dark-comment)
                (success :foreground ,mayukai-dark-green)
                (tmayukai-darkltip :foreground ,mayukai-dark-fg :background ,mayukai-dark-current)
-               (trailing-whitespace :background ,mayukai-dark-orange :foreground ,mayukai-dark-bg)
+               (trailing-whitespace :background ,mayukai-dark-orange :foreground ,mayukai-dark-current)
                (vertical-border :foreground ,bg2)
                (warning :foreground ,mayukai-dark-orange)
                ;; syntax / font-lock
@@ -793,10 +793,10 @@ The theme has to be reloaded after changing anything in this group."
                (whitespace-indentation :foreground ,mayukai-dark-red)
                (whitespace-line :background ,mayukai-dark-bg :foreground ,mayukai-dark-pink)
                (whitespace-newline :foreground ,mayukai-dark-bg)
-               (whitespace-space :background ,mayukai-dark-bg :foreground ,mayukai-dark-bg)
+               (whitespace-space :background ,mayukai-dark-current :foreground ,mayukai-dark-bg)
                (whitespace-space-after-tab :foreground ,mayukai-dark-red)
                (whitespace-space-before-tab :foreground ,mayukai-dark-red)
-               (whitespace-tab :background ,bg2 :foreground ,mayukai-dark-bg)
+               (whitespace-tab :background ,mayukai-dark-current :foreground ,mayukai-dark-bg)
                (whitespace-trailing :inherit trailing-whitespace)
                ;; yard-mode
                (yard-tag-face :inherit font-lock-builtin-face)

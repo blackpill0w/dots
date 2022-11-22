@@ -57,8 +57,10 @@
           'delete-trailing-whitespace)
 
 ;;; Whitespace
-(global-whitespace-mode 1)
+;;(global-whitespace-mode 1) TODO: whitespace only with selection
 (setq whitespace-line-column 5000)
+(load-file (concat user-emacs-directory "other/whitespace4r.el"))
+(add-hook 'prog-mode-hook #'whitespace4r-mode)
 
 ;;; Font
 (add-to-list 'default-frame-alist
@@ -124,15 +126,18 @@
         use-package-expand-minimally t))
 
 ;;; Folding
-(use-package yafolding
-  :ensure t
-  :config (yafolding-mode t))
-(global-set-key (kbd "C-, C-s")  'yafolding-show-parent-element)
-(global-set-key (kbd "C-, C-h")  'yafolding-hide-parent-element)
-(global-set-key (kbd "C-, s")  'yafolding-show-element)
-(global-set-key (kbd "C-, h")  'yafolding-hide-element)
-(global-set-key (kbd "C-, C-S-s")  'yafolding-show-all)
-(global-set-key (kbd "C-, C-S-h")  'yafolding-hide-all)
+(load-file (concat user-emacs-directory "other/hideshowvis.el"))
+(add-hook 'prog-mode-hook #'hideshowvis-minor-mode)
+
+;(use-package yafolding
+;  :ensure t
+;  :config (yafolding-mode t))
+;(global-set-key (kbd "C-, C-s")  'yafolding-show-parent-element)
+;(global-set-key (kbd "C-, C-h")  'yafolding-hide-parent-element)
+;(global-set-key (kbd "C-, s")  'yafolding-show-element)
+;(global-set-key (kbd "C-, h")  'yafolding-hide-element)
+;(global-set-key (kbd "C-, C-S-s")  'yafolding-show-all)
+;(global-set-key (kbd "C-, C-S-h")  'yafolding-hide-all)
 
 ;;; Themes
 
@@ -153,7 +158,7 @@
 (use-package nord-theme
   :ensure t)
 
-(load-theme 'outrun t)
+(load-theme 'mayukai-dark t)
 
 ;;; Multiple cursors
 (global-unset-key (kbd "C-<mouse-1>"))
@@ -199,7 +204,7 @@
   :ensure t
   :config (drag-stuff-define-keys)
   :config (drag-stuff-global-mode 1)
-  )
+)
 
 ;;; Company
 (use-package company
@@ -221,12 +226,12 @@
 ;;; CMake
 (use-package cmake-mode
   :ensure t
-  :mode ("CMakeLists.txt"  . cmake-mode))
+  :mode ("CMakeLists.txt" . cmake-mode))
 
 ;;; Meson
 (use-package meson-mode
   :ensure t
-  :mode ("meson.build"  . meson-mode))
+  :mode ("meson.build" . meson-mode))
 
 ;;; Lex
 (use-package bison-mode

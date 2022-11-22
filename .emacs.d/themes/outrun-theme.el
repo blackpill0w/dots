@@ -794,10 +794,10 @@ The theme has to be reloaded after changing anything in this group."
                (whitespace-indentation :foreground ,outrun-red)
                (whitespace-line :background ,outrun-bg :foreground ,outrun-pink)
                (whitespace-newline :foreground ,outrun-bg)
-               (whitespace-space :background ,outrun-bg :foreground ,outrun-bg)
+               (whitespace-space :background ,outrun-current :foreground ,outrun-bg)
                (whitespace-space-after-tab :foreground ,outrun-red)
                (whitespace-space-before-tab :foreground ,outrun-red)
-               (whitespace-tab :background ,bg2 :foreground ,outrun-bg)
+               (whitespace-tab :background ,outrun-current :foreground ,outrun-bg)
                (whitespace-trailing :inherit trailing-whitespace)
                ;; yard-mode
                (yard-tag-face :inherit font-lock-builtin-face)
