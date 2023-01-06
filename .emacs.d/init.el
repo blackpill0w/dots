@@ -1,11 +1,26 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(setq inhibit-startup-screen t)
+;;; Hide useless buffers when cycling through buffers
+(defvar buffers-not-to-ignore '("*shell*" "*ielm*" "*eww*" "*terminal*" "*ansi-term*" "*eshell*"))
+(defun ignore-useless-buffers ()
+  (set-frame-parameter (selected-frame) 'buffer-predicate
+                       (lambda (buf) (or (member (buffer-name buf) buffers-not-to-ignore)
+                                         (not (string-match-p "^*" (buffer-name buf)))
+                                         ))))
+(ignore-useless-buffers)
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (set-window-scroll-bars
+             (minibuffer-window frame) 0 nil 0 nil t)
+            (set-window-fringes
+             (minibuffer-window frame) 0 0 nil t)))
+
 (tool-bar-mode -1)
 (setq scroll-step 1)
-(set-window-scroll-bars (minibuffer-window) nil nil)
+(setq-default cursor-type 'bar)
+(setq inhibit-startup-screen t)
 
-(setq custom-file (concat user-emacs-directory "custom.el"))
+(setq-default custom-file (concat user-emacs-directory "custom.el"))
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup/"))
       backup-by-copying t
@@ -43,14 +58,6 @@
 
 ;;; Terminal
 (global-set-key (kbd "C-t") (lambda() (interactive) (term "/usr/bin/bash")))
-
-;;; Hide useless buffers when cycling through buffers
-(defvar buffers-not-to-ignore '("*shell*" "*ielm*" "*eww*" "*terminal*" "*ansi-term*" "*eshell*"))
-(set-frame-parameter (selected-frame) 'buffer-predicate
-                     (lambda (buf) (or
-                                    (member (buffer-name buf) buffers-not-to-ignore)
-                                    (not (string-match-p "^*" (buffer-name buf)))
-                                    )))
 
 ;;; Remove trailing spaces on save
 (add-hook 'before-save-hook
