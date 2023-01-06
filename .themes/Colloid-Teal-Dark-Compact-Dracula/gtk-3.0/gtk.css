@@ -219,6 +219,12 @@ XfdesktopIconView.view treeview.view .content-view .rubberband,
 .content-view treeview.view rubberband,
 .content-view treeview.view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view .content-view treeview.view .rubberband,
+.content-view treeview.view rubberband,
+.content-view treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view .rubberband,
+treeview.view .content-view rubberband,
+treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view .content-view .rubberband,
 .content-view treeview.view flowbox rubberband,
 .content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
@@ -231,6 +237,12 @@ XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
 flowbox treeview.view .content-view rubberband,
 flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox treeview.view .content-view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
 .content-view flowbox treeview.view flowbox rubberband,
 .content-view flowbox treeview.view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
@@ -248,18 +260,44 @@ XfdesktopIconView.view treeview.view flowbox .content-view .rubberband,
 .content-view treeview.view flowbox rubberband,
 .content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
+.content-view treeview.view flowbox rubberband,
+.content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
+treeview.view flowbox .content-view rubberband,
+treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox .content-view .rubberband,
 treeview.view .content-view flowbox rubberband,
 treeview.view .content-view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view treeview.view .content-view flowbox .rubberband,
+.content-view treeview.view flowbox rubberband,
+.content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
+treeview.view flowbox .content-view rubberband,
+treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox .content-view .rubberband,
 treeview.view .content-view flowbox treeview.view rubberband,
 treeview.view .content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view treeview.view .content-view flowbox treeview.view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
 .content-view flowbox treeview.view flowbox rubberband,
 .content-view flowbox treeview.view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
 flowbox treeview.view flowbox .content-view rubberband,
 flowbox treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband,
+treeview.view flowbox .content-view .rubberband,
+.content-view treeview.view flowbox .rubberband,
 flowbox treeview.view rubberband,
 flowbox treeview.view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox treeview.view .rubberband,
@@ -272,6 +310,12 @@ XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
 flowbox .content-view treeview.view rubberband,
 flowbox .content-view treeview.view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox .content-view treeview.view .rubberband,
+.content-view flowbox treeview.view rubberband,
+.content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
+flowbox treeview.view .content-view rubberband,
+flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view .content-view .rubberband,
 flowbox .content-view treeview.view flowbox rubberband,
 flowbox .content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox .content-view treeview.view flowbox .rubberband,
@@ -281,9 +325,35 @@ XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
 flowbox treeview.view flowbox .content-view rubberband,
 flowbox treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband,
+.content-view flowbox treeview.view rubberband,
+.content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
+flowbox treeview.view .content-view rubberband,
+flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view .content-view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
+.content-view flowbox treeview.view flowbox rubberband,
+.content-view flowbox treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
+flowbox treeview.view flowbox .content-view rubberband,
+flowbox treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband,
+flowbox treeview.view .content-view .rubberband,
+.content-view flowbox treeview.view .rubberband,
 flowbox rubberband,
 flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox .rubberband,
+flowbox .content-view rubberband,
+flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox .content-view .rubberband,
+.content-view flowbox rubberband,
+.content-view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox .rubberband,
 flowbox .content-view treeview.view rubberband,
 flowbox .content-view treeview.view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox .content-view treeview.view .rubberband,
@@ -296,18 +366,32 @@ XfdesktopIconView.view flowbox treeview.view .content-view .rubberband,
 treeview.view .content-view flowbox rubberband,
 treeview.view .content-view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view treeview.view .content-view flowbox .rubberband,
+.content-view treeview.view flowbox rubberband,
+.content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
 treeview.view flowbox .content-view rubberband,
 treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view treeview.view flowbox .content-view .rubberband,
 .content-view flowbox treeview.view rubberband,
 .content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
+flowbox treeview.view .content-view rubberband,
+flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view .content-view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
 .content-view flowbox treeview.view flowbox rubberband,
 .content-view flowbox treeview.view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
 flowbox treeview.view flowbox .content-view rubberband,
 flowbox treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband,
+flowbox .content-view .rubberband,
+.content-view flowbox .rubberband,
 flowbox treeview.view rubberband,
 flowbox treeview.view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox treeview.view .rubberband,
@@ -320,6 +404,12 @@ XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
 flowbox .content-view treeview.view rubberband,
 flowbox .content-view treeview.view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox .content-view treeview.view .rubberband,
+.content-view flowbox treeview.view rubberband,
+.content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
+flowbox treeview.view .content-view rubberband,
+flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view .content-view .rubberband,
 flowbox .content-view treeview.view flowbox rubberband,
 flowbox .content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox .content-view treeview.view flowbox .rubberband,
@@ -329,6 +419,26 @@ XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
 flowbox treeview.view flowbox .content-view rubberband,
 flowbox treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband,
+.content-view flowbox treeview.view rubberband,
+.content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
+flowbox treeview.view .content-view rubberband,
+flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view .content-view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
+.content-view flowbox treeview.view flowbox rubberband,
+.content-view flowbox treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
+flowbox treeview.view flowbox .content-view rubberband,
+flowbox treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband,
+flowbox treeview.view .content-view .rubberband,
+.content-view flowbox treeview.view .rubberband,
 treeview.view flowbox rubberband,
 treeview.view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view treeview.view flowbox .rubberband,
@@ -338,15 +448,138 @@ XfdesktopIconView.view treeview.view flowbox .content-view .rubberband,
 .content-view treeview.view flowbox rubberband,
 .content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
+.content-view treeview.view flowbox rubberband,
+.content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
+treeview.view flowbox .content-view rubberband,
+treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox .content-view .rubberband,
 treeview.view .content-view flowbox rubberband,
 treeview.view .content-view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view treeview.view .content-view flowbox .rubberband,
+.content-view treeview.view flowbox rubberband,
+.content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
+treeview.view flowbox .content-view rubberband,
+treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox .content-view .rubberband,
+treeview.view .content-view flowbox treeview.view rubberband,
+treeview.view .content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view .content-view flowbox treeview.view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
 .content-view flowbox treeview.view flowbox rubberband,
 .content-view flowbox treeview.view flowbox XfdesktopIconView.view .rubberband,
 XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
 flowbox treeview.view flowbox .content-view rubberband,
 flowbox treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
-XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband {
+XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband,
+treeview.view flowbox .content-view .rubberband,
+.content-view treeview.view flowbox .rubberband,
+treeview.view flowbox rubberband,
+treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox .rubberband,
+treeview.view flowbox .content-view rubberband,
+treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox .content-view .rubberband,
+.content-view treeview.view flowbox rubberband,
+.content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
+.content-view treeview.view flowbox rubberband,
+.content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
+treeview.view flowbox .content-view rubberband,
+treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox .content-view .rubberband,
+treeview.view .content-view flowbox rubberband,
+treeview.view .content-view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view .content-view flowbox .rubberband,
+.content-view treeview.view flowbox rubberband,
+.content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox .rubberband,
+treeview.view flowbox .content-view rubberband,
+treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox .content-view .rubberband,
+treeview.view .content-view flowbox treeview.view rubberband,
+treeview.view .content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view .content-view flowbox treeview.view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
+.content-view flowbox treeview.view flowbox rubberband,
+.content-view flowbox treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
+flowbox treeview.view flowbox .content-view rubberband,
+flowbox treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband,
+treeview.view flowbox .content-view .rubberband,
+.content-view treeview.view flowbox .rubberband,
+flowbox treeview.view rubberband,
+flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view .rubberband,
+flowbox treeview.view .content-view rubberband,
+flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view .content-view .rubberband,
+.content-view flowbox treeview.view rubberband,
+.content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
+flowbox .content-view treeview.view rubberband,
+flowbox .content-view treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox .content-view treeview.view .rubberband,
+.content-view flowbox treeview.view rubberband,
+.content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
+flowbox treeview.view .content-view rubberband,
+flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view .content-view .rubberband,
+flowbox .content-view treeview.view flowbox rubberband,
+flowbox .content-view treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox .content-view treeview.view flowbox .rubberband,
+.content-view flowbox treeview.view flowbox rubberband,
+.content-view flowbox treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
+flowbox treeview.view flowbox .content-view rubberband,
+flowbox treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband,
+.content-view flowbox treeview.view rubberband,
+.content-view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view .rubberband,
+flowbox treeview.view .content-view rubberband,
+flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view .content-view .rubberband,
+.content-view treeview.view flowbox treeview.view rubberband,
+.content-view treeview.view flowbox treeview.view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view treeview.view flowbox treeview.view .rubberband,
+treeview.view flowbox treeview.view .content-view rubberband,
+treeview.view flowbox treeview.view .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view treeview.view flowbox treeview.view .content-view .rubberband,
+.content-view flowbox treeview.view flowbox rubberband,
+.content-view flowbox treeview.view flowbox XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view .content-view flowbox treeview.view flowbox .rubberband,
+flowbox treeview.view flowbox .content-view rubberband,
+flowbox treeview.view flowbox .content-view XfdesktopIconView.view .rubberband,
+XfdesktopIconView.view flowbox treeview.view flowbox .content-view .rubberband,
+flowbox treeview.view .content-view .rubberband,
+.content-view flowbox treeview.view .rubberband {
   border: 1px solid #98dad8;
   background-color: rgba(152, 218, 216, 0.3);
 }
@@ -1258,7 +1491,7 @@ toolbar {
 frame.documents-dropdown, .app-notification, toolbar.osd {
   transition: box-shadow 75ms cubic-bezier(0, 0, 0.2, 1);
   padding: 4px;
-  border-radius: 6px;
+  border-radius: 12px;
   box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), inset 0 1px rgba(255, 255, 255, 0.1);
   background-color: #343746;
 }
@@ -1319,6 +1552,11 @@ toolbar:not(.inline-toolbar):not(.osd) switch {
   border-width: 0 1px 1px;
   border-color: rgba(255, 255, 255, 0.12);
   background-color: #1f2029;
+}
+
+.frame .inline-toolbar {
+  border-width: 1px 0 0;
+  background-color: transparent;
 }
 
 searchbar > revealer > box,
@@ -1406,7 +1644,7 @@ searchbar > revealer > box {
   background-color: #1f2029;
   color: #ffffff;
   border-radius: 12px 12px 0 0;
-  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12), inset 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12);
 }
 
 .titlebar:disabled {
@@ -1455,7 +1693,7 @@ searchbar > revealer > box {
   background-color: #1f2029;
   background-image: none;
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12), inset 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12);
 }
 
 .titlebar + separator:backdrop, .titlebar + separator.sidebar:backdrop {
@@ -1485,7 +1723,7 @@ searchbar > revealer > box {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.titlebar .path-bar button:not(.suggested-action):not(.destructive-action).text-button {
+.titlebar .path-bar button.text-button:not(.suggested-action):not(.destructive-action) {
   min-width: 0;
   padding-left: 4px;
   padding-right: 4px;
@@ -1496,7 +1734,7 @@ searchbar > revealer > box {
   animation: ripple-on-headerbar 225ms cubic-bezier(0, 0, 0.2, 1);
   background-color: #98dad8;
   color: rgba(0, 0, 0, 0.87);
-  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12), inset 0 1px rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12);
 }
 
 .titlebar.selection-mode:backdrop {
@@ -1562,6 +1800,11 @@ searchbar > revealer > box {
   padding: 4px 8px;
   border-radius: 12px 12px 0 0;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  background-color: #1f2029;
+}
+
+.titlebar.default-decoration:backdrop {
+  background-color: #242632;
 }
 
 .tiled .titlebar.default-decoration, .maximized .titlebar.default-decoration, .fullscreen .titlebar.default-decoration {
@@ -1578,7 +1821,7 @@ searchbar > revealer > box {
 
 .background.csd .titlebar.default-decoration {
   padding: 4px;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 -1px rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12);
 }
 
 .background:not(.csd) .titlebar.default-decoration button.titlebutton:active {
@@ -1752,10 +1995,6 @@ treeview.view:selected {
   background-image: none;
 }
 
-treeview.view:hover, treeview.view:selected {
-  border-radius: 0;
-}
-
 treeview.view.separator {
   min-height: 4px;
   color: rgba(255, 255, 255, 0.12);
@@ -1767,11 +2006,11 @@ treeview.view:drop(active) {
   border-color: alpha(currentColor, 0.08);
 }
 
-treeview.view:drop(active).after {
+treeview.view.after:drop(active) {
   border-top-style: none;
 }
 
-treeview.view:drop(active).before {
+treeview.view.before:drop(active) {
   border-bottom-style: none;
 }
 
@@ -1892,19 +2131,16 @@ menubar,
 menubar:backdrop,
 .menubar:backdrop {
   color: rgba(255, 255, 255, 0.7);
+  background-color: #242632;
 }
 
 .csd menubar, .csd .menubar {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.csd menubar:backdrop, .csd .menubar:backdrop {
-  background-color: #242632;
-}
-
 menubar > menuitem,
 .menubar > menuitem {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
+  transition: none;
   min-height: 20px;
   padding: 4px 8px;
   color: rgba(255, 255, 255, 0.7);
@@ -1933,6 +2169,13 @@ menubar > menuitem label:disabled,
   color: inherit;
 }
 
+menubar > menuitem > window.background.csd.popup > decoration,
+menubar > menuitem > window.background.csd.popup > menu,
+.menubar > menuitem > window.background.csd.popup > decoration,
+.menubar > menuitem > window.background.csd.popup > menu {
+  border-radius: 0 0 10px 10px;
+}
+
 menubar > menuitem > window.popup.background > menu menuitem,
 .menubar > menuitem > window.popup.background > menu menuitem {
   transition: none;
@@ -1955,7 +2198,7 @@ menu,
 
 .csd menu, .csd .menu, .csd .context-menu {
   border: none;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 menu menuitem,
@@ -2095,12 +2338,13 @@ popover.background {
 }
 
 popover.background, .csd popover.background {
-  border: none;
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.75);
+  background-clip: border-box;
 }
 
 popover.background:backdrop, .csd popover.background:backdrop {
-  box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.05), 0 2px 3px -1px rgba(0, 0, 0, 0.06), 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.05), 0 2px 3px -1px rgba(0, 0, 0, 0.06), 0 1px 4px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.75);
 }
 
 popover.background > stack {
@@ -2201,13 +2445,20 @@ tabbox > tab:checked:disabled, notebook > header tab:checked:disabled {
   color: rgba(255, 255, 255, 0.5);
 }
 
+notebook {
+  background-color: #242632;
+}
+
 frame > paned > notebook > header, notebook.frame > header {
   background-color: rgba(255, 255, 255, 0.04);
 }
 
-notebook, notebook.frame {
-  background-color: #242632;
+notebook.frame {
   border-radius: 10px;
+}
+
+notebook.frame scrolledwindow.frame {
+  border: none;
 }
 
 notebook.frame frame > border {
@@ -2429,19 +2680,19 @@ scrollbar.overlay-indicator:not(.dragging):not(.hovering) button:disabled {
   background-color: rgba(255, 255, 255, 0.32);
 }
 
-scrollbar.overlay-indicator:not(.dragging):not(.hovering).horizontal slider {
+scrollbar.overlay-indicator.horizontal:not(.dragging):not(.hovering) slider {
   min-width: 24px;
 }
 
-scrollbar.overlay-indicator:not(.dragging):not(.hovering).horizontal button {
+scrollbar.overlay-indicator.horizontal:not(.dragging):not(.hovering) button {
   min-width: 8px;
 }
 
-scrollbar.overlay-indicator:not(.dragging):not(.hovering).vertical slider {
+scrollbar.overlay-indicator.vertical:not(.dragging):not(.hovering) slider {
   min-height: 24px;
 }
 
-scrollbar.overlay-indicator:not(.dragging):not(.hovering).vertical button {
+scrollbar.overlay-indicator.vertical:not(.dragging):not(.hovering) button {
   min-height: 8px;
 }
 
@@ -2495,7 +2746,7 @@ switch {
 }
 
 switch:checked {
-  background-color: #98dad8;
+  background-color: #50fa7b;
 }
 
 switch:disabled {
@@ -2591,28 +2842,28 @@ check:checked, check:indeterminate,
 radio:checked,
 radio:indeterminate {
   color: rgba(0, 0, 0, 0.87);
-  background-color: #98dad8;
+  background-color: #50fa7b;
 }
 
 check:checked:hover, check:indeterminate:hover,
 radio:checked:hover,
 radio:indeterminate:hover {
-  box-shadow: 0 0 0 6px rgba(152, 218, 216, 0.15);
-  background-color: #bee7e6;
+  box-shadow: 0 0 0 6px rgba(80, 250, 123, 0.15);
+  background-color: #82fba0;
 }
 
 check:checked:active, check:indeterminate:active,
 radio:checked:active,
 radio:indeterminate:active {
-  box-shadow: 0 0 0 6px rgba(152, 218, 216, 0.2);
-  background-color: #98dad8;
+  box-shadow: 0 0 0 6px rgba(80, 250, 123, 0.2);
+  background-color: #50fa7b;
 }
 
 check:checked:disabled, check:indeterminate:disabled,
 radio:checked:disabled,
 radio:indeterminate:disabled {
   color: rgba(0, 0, 0, 0.38);
-  background-color: rgba(152, 218, 216, 0.35);
+  background-color: rgba(80, 250, 123, 0.35);
 }
 
 popover modelbutton.flat check, popover modelbutton.flat check:focus, popover modelbutton.flat check:hover, popover modelbutton.flat check:focus:hover, popover modelbutton.flat check:active, popover modelbutton.flat check:disabled, popover modelbutton.flat radio, popover modelbutton.flat radio:focus, popover modelbutton.flat radio:hover, popover modelbutton.flat radio:focus:hover, popover modelbutton.flat radio:active, popover modelbutton.flat radio:disabled {
@@ -2717,7 +2968,7 @@ treeview.view radio, treeview.view check {
   margin: 0;
 }
 
-treeview.view radio:not(:hover):not(:disabled):not(:checked):not(:indeterminate), treeview.view check:not(:hover):not(:disabled):not(:checked):not(:indeterminate) {
+treeview.view radio:not(:disabled):not(:checked):not(:indeterminate), treeview.view check:not(:disabled):not(:checked):not(:indeterminate) {
   background-color: rgba(255, 255, 255, 0.12);
 }
 
@@ -2725,8 +2976,8 @@ treeview.view radio, treeview.view radio:hover, treeview.view radio:disabled, tr
   box-shadow: none;
 }
 
-treeview.view:selected radio:checked, treeview.view:selected radio:indeterminate, treeview.view:selected check:checked, treeview.view:selected check:indeterminate, treeview.view:selected:focus radio:checked, treeview.view:selected:focus radio:indeterminate, treeview.view:selected:focus check:checked, treeview.view:selected:focus check:indeterminate {
-  background-color: #98dad8;
+treeview.view radio:checked, treeview.view radio:indeterminate, treeview.view check:checked, treeview.view check:indeterminate, treeview.view:hover radio:checked, treeview.view:hover radio:indeterminate, treeview.view:hover check:checked, treeview.view:hover check:indeterminate, treeview.view:selected radio:checked, treeview.view:selected radio:indeterminate, treeview.view:selected check:checked, treeview.view:selected check:indeterminate {
+  background-color: #50fa7b;
   color: rgba(0, 0, 0, 0.87);
   background-image: none;
 }
@@ -3184,7 +3435,7 @@ levelbar block.high, levelbar block:not(.empty) {
 }
 
 levelbar block.full {
-  background-color: #98dad8;
+  background-color: #50fa7b;
 }
 
 levelbar block.empty {
@@ -3366,7 +3617,7 @@ window.background.csd stack stack stack frame > list row:only-child, window.back
 }
 
 window.background.csd stack stack stack frame > list row:focus, window.background.csd > stack > list row:focus, preferencesgroup list row:focus, .geary-accounts-editor-pane list row:focus, window.background.csd.unified > deck > deck > deck list row:focus, hdyleaflet list.view row:focus, hdyleaflet list.frame row:focus, leaflet list.view row:focus, leaflet list.frame row:focus, box.horizontal > stack.background list.view row:focus, box.horizontal > stack.background list.frame row:focus, hdyleaflet stack.background scrolledwindow > viewport list row:focus, hdyleaflet overlay scrolledwindow > viewport list row:focus, leaflet stack.background scrolledwindow > viewport list row:focus, leaflet overlay scrolledwindow > viewport list row:focus, box.horizontal > stack.background stack.background scrolledwindow > viewport list row:focus, box.horizontal > stack.background overlay scrolledwindow > viewport list row:focus, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row:focus, leaflet frame:not(.view) list:not(.contacts-contact-list) row:focus, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row:focus, list.tweak-group list row:focus, .tweak-group-startup row:focus, list.content:not(.conversation-listbox) > row:focus {
-  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.08);
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.05);
 }
 
 list {
@@ -3397,25 +3648,25 @@ list.navigation-sidebar > row {
 }
 
 .budgie-popover scrolledwindow.sidebar:not(.categories) list > row.activatable:focus, treeview.view header button:focus, row.activatable:focus {
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.05);
 }
 
 .budgie-popover scrolledwindow.sidebar:not(.categories) list > row.activatable:hover, treeview.view header button:hover, row.activatable:hover {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 0ms, background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.05);
 }
 
 .budgie-popover scrolledwindow.sidebar:not(.categories) list > row.has-open-popup.activatable, treeview.view header button.has-open-popup, .budgie-popover scrolledwindow.sidebar:not(.categories) list > row.activatable:active, treeview.view header button:active, row.activatable.has-open-popup, row.activatable:active {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 0ms, background-image 0ms;
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
-  background-image: radial-gradient(circle, alpha(currentColor, 0.12) 10%, transparent 0%);
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.05);
+  background-image: radial-gradient(circle, alpha(currentColor, 0.05) 10%, transparent 0%);
   background-size: 0% 0%;
 }
 
 row:selected {
   color: inherit;
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: alpha(currentColor, 0.06);
 }
 
 row:selected image,
@@ -3442,6 +3693,10 @@ row:selected:disabled label {
 
 .app-notification button.text-button:not(:disabled) {
   color: #98dad8;
+}
+
+.app-notification > box > label {
+  margin-left: 6px;
 }
 
 .app-notification.frame,
@@ -3610,12 +3865,12 @@ filechooser actionbar, filechooser actionbar > revealer > box {
   border-style: none;
 }
 
-stacksidebar.sidebar:dir(ltr) list, stacksidebar.sidebar.left list, stacksidebar.sidebar.left:dir(rtl) list, .sidebar:not(separator):dir(ltr), .sidebar:not(separator).left {
+stacksidebar.sidebar:dir(ltr) list, stacksidebar.sidebar.left list, stacksidebar.sidebar.left:dir(rtl) list, .sidebar:not(separator):dir(ltr), .sidebar.left:not(separator) {
   border-right: 1px solid rgba(255, 255, 255, 0.12);
   border-left-style: none;
 }
 
-stacksidebar.sidebar:dir(rtl) list, stacksidebar.sidebar.right list, .sidebar:not(separator):dir(rtl), .sidebar:not(separator).right {
+stacksidebar.sidebar:dir(rtl) list, stacksidebar.sidebar.right list, .sidebar:not(separator):dir(rtl), .sidebar.right:not(separator) {
   border-left: 1px solid rgba(255, 255, 255, 0.12);
   border-right-style: none;
 }
@@ -4031,12 +4286,18 @@ colorchooser .popover.osd:backdrop {
 decoration {
   transition: box-shadow 75ms cubic-bezier(0, 0, 0.2, 1);
   border-radius: 12px;
-  box-shadow: 0 8px 6px -5px rgba(0, 0, 0, 0.2), 0 16px 15px 2px rgba(0, 0, 0, 0.14), 0 6px 18px 5px rgba(0, 0, 0, 0.12), 0 0 36px transparent;
+  box-shadow: 0 8px 6px -5px rgba(0, 0, 0, 0.2), 0 16px 15px 2px rgba(0, 0, 0, 0.14), 0 6px 18px 5px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.75), 0 0 36px transparent;
   margin: 8px;
 }
 
+.background.csd decoration {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-clip: border-box;
+  background-color: #242632;
+}
+
 decoration:backdrop {
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 0 36px transparent;
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.75), 0 0 36px transparent;
 }
 
 .maximized decoration, .fullscreen decoration, .tiled decoration, .tiled-top decoration, .tiled-right decoration, .tiled-bottom decoration, .tiled-left decoration {
@@ -4051,7 +4312,7 @@ decoration:backdrop {
 .ssd decoration {
   border: none;
   border-radius: 12px 12px 0 0;
-  box-shadow: none;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.75);
 }
 
 .metacity decoration {
@@ -4063,7 +4324,7 @@ decoration:backdrop {
 .csd.popup decoration {
   border-radius: 10px;
   border: none;
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.75);
 }
 
 tooltip.csd decoration {
@@ -4133,11 +4394,11 @@ button.minimize.titlebutton:active:not(.suggested-action):not(.destructive-actio
 }
 
 button.maximize.titlebutton:not(.suggested-action):not(.destructive-action) {
-  background-color: #50FA7B;
+  background-color: #4be772;
 }
 
 button.maximize.titlebutton:active:not(.suggested-action):not(.destructive-action) {
-  background-color: #7cfb9c;
+  background-color: #78ed95;
 }
 
 button.close.titlebutton:not(.suggested-action):not(.destructive-action) {
@@ -4162,19 +4423,19 @@ button.close.titlebutton:active:not(.suggested-action):not(.destructive-action) 
 }
 
 #MozillaGtkWidget.background headerbar.titlebar.default-decoration button.minimize.titlebutton:hover, .background.csd headerbar.titlebar.default-decoration button.minimize.titlebutton:hover:not(.suggested-action):not(.destructive-action), #MozillaGtkWidget.background headerbar.titlebar.default-decoration button.minimize.titlebutton:active, .background.csd headerbar.titlebar.default-decoration button.minimize.titlebutton:active:not(.suggested-action):not(.destructive-action) {
-  background-image: url("assets/scalable/minimize.svg");
+  background-image: -gtk-scaled(url("assets/scalable/minimize-symbolic.svg"), url("assets/scalable/minimize-symbolic@2.svg"));
 }
 
 #MozillaGtkWidget.background headerbar.titlebar.default-decoration button.maximize.titlebutton:hover, .background.csd headerbar.titlebar.default-decoration button.maximize.titlebutton:hover:not(.suggested-action):not(.destructive-action), #MozillaGtkWidget.background headerbar.titlebar.default-decoration button.maximize.titlebutton:active, .background.csd headerbar.titlebar.default-decoration button.maximize.titlebutton:active:not(.suggested-action):not(.destructive-action) {
-  background-image: url("assets/scalable/maximize.svg");
+  background-image: -gtk-scaled(url("assets/scalable/maximize-symbolic.svg"), url("assets/scalable/maximize-symbolic@2.svg"));
 }
 
 #MozillaGtkWidget.background headerbar.titlebar.default-decoration button.close.titlebutton:hover, .background.csd headerbar.titlebar.default-decoration button.close.titlebutton:hover:not(.suggested-action):not(.destructive-action), #MozillaGtkWidget.background headerbar.titlebar.default-decoration button.close.titlebutton:active, .background.csd headerbar.titlebar.default-decoration button.close.titlebutton:active:not(.suggested-action):not(.destructive-action) {
-  background-image: url("assets/scalable/close.svg");
+  background-image: -gtk-scaled(url("assets/scalable/close-symbolic.svg"), url("assets/scalable/close-symbolic@2.svg"));
 }
 
-.background.csd.maximized headerbar.titlebar.default-decoration button.titlebutton:not(.suggested-action):not(.destructive-action).maximize:hover, .background.csd.maximized headerbar.titlebar.default-decoration button.titlebutton:not(.suggested-action):not(.destructive-action).maximize:active, .background.csd.fullscreen headerbar.titlebar.default-decoration button.titlebutton:not(.suggested-action):not(.destructive-action).maximize:hover, .background.csd.fullscreen headerbar.titlebar.default-decoration button.titlebutton:not(.suggested-action):not(.destructive-action).maximize:active, .background.csd.tiled headerbar.titlebar.default-decoration button.titlebutton:not(.suggested-action):not(.destructive-action).maximize:hover, .background.csd.tiled headerbar.titlebar.default-decoration button.titlebutton:not(.suggested-action):not(.destructive-action).maximize:active {
-  background-image: url("assets/scalable/unmaximize.svg");
+.background.csd.maximized headerbar.titlebar.default-decoration button.titlebutton.maximize:not(.suggested-action):not(.destructive-action):hover, .background.csd.maximized headerbar.titlebar.default-decoration button.titlebutton.maximize:not(.suggested-action):not(.destructive-action):active {
+  background-image: -gtk-scaled(url("assets/scalable/unmaximize-symbolic.svg"), url("assets/scalable/unmaximize-symbolic@2.svg"));
 }
 
 .monospace {
@@ -4240,7 +4501,7 @@ stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destruc
   padding: 2px 8px;
 }
 
-stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button {
+stackswitcher.linked:not(.vertical) > button.text-button:not(.suggested-action):not(.destructive-action) {
   min-width: 100px;
 }
 
@@ -4479,11 +4740,11 @@ popover.emoji-completion .emoji:hover {
   margin-right: 0;
 }
 
-.path-bar-box .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action).text-button {
+.path-bar-box .linked.nautilus-path-bar button.text-button:not(.suggested-action):not(.destructive-action) {
   min-width: 0;
 }
 
-.path-bar-box .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action).text-button.image-button image:not(:only-child) {
+.path-bar-box .linked.nautilus-path-bar button.text-button.image-button:not(.suggested-action):not(.destructive-action) image:not(:only-child) {
   margin: 0;
 }
 
@@ -4507,11 +4768,11 @@ popover.emoji-completion .emoji:hover {
   margin-bottom: 0;
 }
 
-.windowhandle .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action).current-dir {
+.windowhandle .linked.nautilus-path-bar button.current-dir:not(.suggested-action):not(.destructive-action) {
   color: #ffffff;
 }
 
-.windowhandle .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action).current-dir:hover, .windowhandle .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action).current-dir:active {
+.windowhandle .linked.nautilus-path-bar button.current-dir:not(.suggested-action):not(.destructive-action):hover, .windowhandle .linked.nautilus-path-bar button.current-dir:not(.suggested-action):not(.destructive-action):active {
   background: none;
   box-shadow: none;
 }
@@ -4551,7 +4812,7 @@ popover.emoji-completion .emoji:hover {
   background-color: transparent;
 }
 
-.nautilus-window notebook :not(treeview).view {
+.nautilus-window notebook .view:not(treeview) {
   border-radius: 4px;
 }
 
@@ -4657,7 +4918,7 @@ window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned s
   padding: 4px;
   background-color: #343746;
   border-radius: 0 0 10px 10px;
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.75);
 }
 
 .gedit-search-slider .linked:not(.vertical) > entry .gedit-search-entry-occurrences-tag {
@@ -5056,7 +5317,7 @@ stack.view.polari-entry-area {
   border-bottom-right-radius: 12px;
 }
 
-stack:disabled.view.polari-entry-area {
+stack.view.polari-entry-area:disabled {
   background-image: image(#242632);
 }
 
@@ -5572,6 +5833,7 @@ window.background > box.vertical > box.horizontal > frame > scrolledwindow > vie
 
 window.background > box.vertical > box.horizontal > stack > widget > notebook.frame {
   border-width: 0;
+  border-radius: 0 0 12px 0;
 }
 
 window.background > box.vertical > box.horizontal > stack > widget > notebook.frame > stack {
@@ -5907,7 +6169,7 @@ window.background.csd.unified headerbar {
 }
 
 window.background.csd.unified > decoration-overlay {
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 window.background.csd.unified,
@@ -6356,7 +6618,7 @@ UnityDecoration .menuitem:hover {
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 2px -0.6px rgba(0, 0, 0, 0.17);
 }
 
-.background:not(.csd) headerbar:not(.titlebar).inline-toolbar {
+.background:not(.csd) headerbar.inline-toolbar:not(.titlebar) {
   border-style: none;
 }
 
@@ -6873,8 +7135,9 @@ MsdOsdWindow.background.osd .progressbar {
 }
 
 .budgie-popover {
-  border: none;
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.75);
+  background-clip: border-box;
   background-color: #242632;
   border-radius: 10px;
 }
@@ -7582,6 +7845,14 @@ wnck-pager:selected {
   background-color: #98dad8;
 }
 
+#xfce4-mpc-plugin-26 > frame > border {
+  border: none;
+}
+
+#xfce-panel-button {
+  -gtk-icon-style: symbolic;
+}
+
 XfdesktopIconView.view {
   border-radius: 6px;
   background-color: transparent;
@@ -7612,7 +7883,7 @@ window#whiskermenu-window > frame > border {
   margin: 4px;
   border: none;
   background-color: #242632;
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), inset 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.75), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 window#whiskermenu-window box.categories > button.radio {
@@ -7658,7 +7929,7 @@ window#whiskermenu-window .title-area > .commands-area > button.flat.command-but
 }
 
 #XfceNotifyWindow {
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.75);
 }
 
 #XfceNotifyWindow buttonbox {
@@ -7958,7 +8229,7 @@ widgets main borders color on backdrop windows */
 these are pretty self explicative */
 @define-color warning_color #f1fa8c;
 @define-color error_color #ff5555;
-@define-color success_color #98dad8;
+@define-color success_color #50fa7b;
 /*
 these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */
@@ -7972,8 +8243,8 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_button_icon alpha(black, 0.5);
 @define-color wm_button_close_hover_bg #f44d4d;
 @define-color wm_button_close_active_bg #f01313;
-@define-color wm_button_max_hover_bg #98dad8;
-@define-color wm_button_max_active_bg #6bcac7;
+@define-color wm_button_max_hover_bg #4be772;
+@define-color wm_button_max_active_bg #1dd84c;
 @define-color wm_button_min_hover_bg #e8f467;
 @define-color wm_button_min_active_bg #dff02e;
 /*
@@ -8036,4 +8307,3 @@ FIXME this is really an API */
 @define-color BLACK_500 #393634;
 @define-color BLACK_700 #33302F;
 @define-color BLACK_900 #2B2928;
-
