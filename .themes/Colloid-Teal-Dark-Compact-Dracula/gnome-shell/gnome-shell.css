@@ -3693,8 +3693,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #dashtodockContainer .number-overlay {
-  color: #ff0000;
-  /*$panel-text;*/
+  color: #ffffff;
   background-color: rgba(0, 0, 0, 0.75);
   text-align: center;
 }
@@ -3765,19 +3764,19 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #dashtodockContainer .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.3) !important;
+  background-color: #a0a0a0 !important;
 }
 
 #dashtodockContainer StWidget.focused .app-well-app-running-dot {
-  background-color: #98dad8 !important;
+  background-color: #a0a0a0 !important;
 }
 
 #dashtodockContainer:overview #dash .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.3) !important;
+  background-color: #a0a0a0 !important;
 }
 
 #dashtodockContainer:overview #dash StWidget.focused .app-well-app-running-dot {
-  background-color: #98dad8 !important;
+  background-color: #a0a0a0 !important;
 }
 
 #dashtodockContainer .show-apps .overview-icon,

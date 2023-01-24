@@ -93,19 +93,19 @@
   }
 
   .app-well-app-running-dot {
-    background-color: on($panel, track) !important;
+    background-color: #a0a0a0 !important;
   }
 
   StWidget.focused .app-well-app-running-dot {
-    background-color: $indicator !important;
+    background-color: #a0a0a0 !important;
   }
 
   &:overview #dash .app-well-app-running-dot {
-    background-color: on(dark, track) !important;
+    background-color: #a0a0a0 !important;
   }
 
   &:overview #dash StWidget.focused .app-well-app-running-dot {
-    background-color: $inverse-indicator !important;
+    background-color: #a0a0a0 !important;
   }
 
   .show-apps,
