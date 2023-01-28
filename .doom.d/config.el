@@ -123,8 +123,16 @@
 
 ;; C-w to close buffer
 (map! "C-w" #'kill-current-buffer)
+;; C-t to open vterm
+(map! "C-t" #'vterm)
 ;; Multiple cursor
 (map! "C->" #'mc/mark-previous-like-this)
 (map! "C-<" #'mc/mark-next-like-this)
 (map! "C-M-<mouse-1>" #'mc/add-cursor-on-click)
 (map! :map mc/keymap "<return>" nil)
+
+;;; Move arround split windows
+(global-set-key (kbd "C-, <right>") 'windmove-right)
+(global-set-key (kbd "C-, <left>")  'windmove-left)
+(global-set-key (kbd "C-, <up>")    'windmove-up)
+(global-set-key (kbd "C-, <down>")  'windmove-down)
