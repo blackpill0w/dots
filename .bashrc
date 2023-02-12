@@ -115,7 +115,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# Custom
-export PATH="$PATH:/sbin:/usr/sbin:/usr/local/sbin:~/.local/bin"
-
