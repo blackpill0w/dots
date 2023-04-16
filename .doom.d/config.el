@@ -23,7 +23,7 @@
 ;;
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
-(setq doom-font (font-spec :family "Iosevka term ss07" :size 15))
+(set-face-attribute 'default nil :font "Iosevka term ss07" :height 120)
 (cua-mode t)
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -34,7 +34,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'nayuu)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -97,20 +97,14 @@
           (rename-file filename new-name t)
           (set-visited-file-name new-name t t)))))))
 
-;; Stroustrup style without namespace indentation
-(c-add-style "modified-stroustrup"
-             '("stroustrup"
-               (c-basic-offset . 3)
-               (tab-width . 3)
-               (c-offsets-alist
-                (innamespace . 0)
-                )))
+;; Cpp styles
+(load "~/.doom.d/cpp-styles.el")
 
 ;; Indentation & Style
 (setq-default indent-tabs-mode nil
-              c-basic-offset 3
-              tab-width 3
-              c-default-style "modified-stroustrup")
+              c-default-style "stroustrup-modified")
+
+(map! "C-, f" #'clang-format-buffer)
 
 ;; Disable all previous themes before changing themes
 (defun disable-all-themes ()
@@ -136,3 +130,15 @@
 (global-set-key (kbd "C-, <left>")  'windmove-left)
 (global-set-key (kbd "C-, <up>")    'windmove-up)
 (global-set-key (kbd "C-, <down>")  'windmove-down)
+
+;; Disable lsp on startup
+(setq flycheck-mode -1)
+(setq lsp-mode -1)
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++20")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++20")))
+
+;; ocp-indent for ocaml
+(add-to-list 'load-path "/home/blackpill0w/.opam/default/share/emacs/site-lisp")
+
+;; Disable colored parens
+(fset 'rainbow-delimiters-mode #'ignore)
