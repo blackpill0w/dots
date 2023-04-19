@@ -49,24 +49,27 @@ determine the exact padding."
   ;; name        default   256       16
   (
    ;; common
-   (common-accent   '("#e6b450" "orange"  "orange" ))
+   (common-accent   '("#1ea8fc" "orange"  "orange" ))
    (common-bg       '("#0d1017" "black"   "black"  ))
-   (common-line     '("#131721" "grey"    "grey"  ))
-   (common-fg       '("#ffffff" "grey"    "grey"   )) ;; #bfbdb6
+   (common-line     '("#131721" "grey"    "grey"   ))
+   (common-fg       '("#ffffff" "grey"    "grey"   ))
    (common-ui       '("#565b66" "grey"    "grey"   ))
    (test            '("#73b8ff" "grey"    "grey"   ))
    ;; syntax
    (syntax-tag      '("#39bae6" "cyan"    "blue"   ))
+   (blue            '("#1ea8fc" "blue"    "blue"   ))
+   (bright-cyan     '("#60c5ff" "cyan"    "cyan"   ))
    (syntax-func     '("#ffb454" "yellow"  "yellow" ))
    (syntax-entity   '("#59c2ff" "blue"    "blue"   ))
-   (syntax-string   '("#bae67e" "green"   "green"  ))
+   (syntax-string   bright-cyan)
    (syntax-regexp   '("#95e6cb" "teal"    "green"  ))
    (syntax-markup   '("#f07178" "red"     "red"    ))
-   (syntax-keyword  '("#f9af4f" "orange"  "orange" ))
-   (syntax-special  '("#f9af4f" "yellow"  "yellow" ))
+   (syntax-keyword  blue)
+   (purple  '("#c286ff" "pink"  "pink"     ))
+   (syntax-special  purple)
    (syntax-comment  '("#475266" "grey"    "grey"   ))
-   (syntax-constant '("#d2a6ff" "magenta" "purple" ))
-   (syntax-operator '("#f29668" "orange"  "orange" ))
+   (syntax-constant purple)
+   (syntax-operator purple)
    (syntax-error    '("#d95757" "red"     "red"    ))
    ;; editor
    (editor-selection-active '("#1B3A5B" "grey" "grey"))
@@ -126,14 +129,14 @@ determine the exact padding."
    (comments       (if doom-ayu-dark-brighter-comments dark-cyan base5))
    (doc-comments   (doom-lighten (if doom-ayu-dark-brighter-comments dark-cyan base5) 0.25))
    (constants      syntax-constant)
-   (functions      syntax-func)
+   (functions      fg)
    (keywords       syntax-keyword)
    (methods        syntax-func)
    (operators      syntax-operator)
-   (type           syntax-special)
+   (type           fg)
    (strings        syntax-string)
    (variables      common-fg)
-   (numbers        syntax-func)
+   (numbers        bright-cyan)
    (region         ui-selection-bg)
    (error          syntax-error)
    (warning        yellow)
@@ -166,7 +169,7 @@ determine the exact padding."
   ;;;; Base theme face overrides
   ((hl-line :background common-line) 
    ((line-number &override) :foreground syntax-comment)
-   ((line-number-current-line &override) :foreground fg)
+   ((line-number-current-line &override) :foreground cyan)
    (diff-removed :foreground vcs-removed)
    (font-lock-comment-face
     :foreground comments
