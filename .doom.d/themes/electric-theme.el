@@ -43,7 +43,7 @@ determine the exact padding."
 ;;
 ;;; Theme definition
 
-(def-doom-theme custom1
+(def-doom-theme electric
   "A dark theme inspired by Ayu dark"
 
   ;; name        default   256       16
