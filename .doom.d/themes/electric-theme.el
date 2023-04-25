@@ -58,7 +58,7 @@ determine the exact padding."
    ;; syntax
    (syntax-tag      '("#39bae6" "cyan"    "blue"   ))
    (blue            '("#1ea8fc" "blue"    "blue"   ))
-   (bright-cyan     '("#60c5ff" "cyan"    "cyan"   ))
+   (bright-cyan     '("#60e8f0" "cyan"    "cyan"   ))
    (syntax-func     '("#ffb454" "yellow"  "yellow" ))
    (syntax-entity   '("#59c2ff" "blue"    "blue"   ))
    (syntax-string   bright-cyan)
