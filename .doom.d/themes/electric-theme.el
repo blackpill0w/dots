@@ -49,7 +49,7 @@ determine the exact padding."
   ;; name        default   256       16
   (
    ;; common
-   (common-accent   '("#1ea8fc" "orange"  "orange" ))
+   (common-accent   '("#1ea8fc" "blue"  "blue"     ))
    (common-bg       '("#0d1017" "black"   "black"  ))
    (common-line     '("#131721" "grey"    "grey"   ))
    (common-fg       '("#ffffff" "grey"    "grey"   ))
@@ -59,13 +59,13 @@ determine the exact padding."
    (syntax-tag      '("#39bae6" "cyan"    "blue"   ))
    (blue            '("#1ea8fc" "blue"    "blue"   ))
    (bright-cyan     '("#60e8f0" "cyan"    "cyan"   ))
-   (syntax-func     '("#ffb454" "yellow"  "yellow" ))
+   (syntax-func     '("#c286ff" "yellow"  "yellow" ))
    (syntax-entity   '("#59c2ff" "blue"    "blue"   ))
    (syntax-string   bright-cyan)
    (syntax-regexp   '("#95e6cb" "teal"    "green"  ))
    (syntax-markup   '("#f07178" "red"     "red"    ))
    (syntax-keyword  blue)
-   (purple  '("#c286ff" "pink"  "pink"     ))
+   (purple          '("#c286ff" "purple"  "purple" ))
    (syntax-special  purple)
    (syntax-comment  '("#475266" "grey"    "grey"   ))
    (syntax-constant purple)
