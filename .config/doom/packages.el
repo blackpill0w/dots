@@ -10,12 +10,13 @@
 ;(package! some-package)
 (package! lsp-pyright)
 (package! cmake-ide)
-(package! rtags)
 (package! meson-mode)
 (package! multiple-cursors)
 (package! clang-format)
 (package! ocp-indent)
 (package! gruber-darker-theme)
+(package! nix-mode)
+(package! nix-sandbox)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:

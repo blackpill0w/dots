@@ -1,5 +1,4 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
@@ -23,7 +22,7 @@
 ;;
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
-(set-face-attribute 'default nil :font "Iosevka term ss07" :height 120)
+(set-face-attribute 'default nil :font "Fantasque Sans Mono" :height 130)
 (cua-mode t)
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -34,7 +33,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'electric)
+(setq doom-theme 'electric-ice)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -98,7 +97,7 @@
           (set-visited-file-name new-name t t)))))))
 
 ;; Cpp styles
-(load "~/.doom.d/cpp-styles.el")
+(load "~/.config/doom/cpp-styles.el")
 
 ;; Indentation & Style
 (setq-default indent-tabs-mode nil
@@ -132,13 +131,10 @@
 (global-set-key (kbd "C-, <down>")  'windmove-down)
 
 ;; Disable lsp on startup
+(setq lsp-clients-clangd-args '("--header-insertion=never"))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++20")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++20")))
 (setq flycheck-mode -1)
 (setq lsp-mode -1)
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++20")))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++20")))
-
-;; ocp-indent for ocaml
-(add-to-list 'load-path "/home/blackpill0w/.opam/default/share/emacs/site-lisp")
-
 ;; Disable colored parens
 (fset 'rainbow-delimiters-mode #'ignore)

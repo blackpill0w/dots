@@ -1,4 +1,24 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(setq gc-cons-threshold (expt 2 24))
+(setq ring-bell-function 'ignore)
+
+;;; UI tweaks
+(setq inhibit-startup-screen t)
+(tool-bar-mode -1)
+(setq scroll-step 1)
+(set-window-scroll-bars (minibuffer-window) 0 'none)
+;;; Custom variables file
+(setq-default custom-file (concat user-emacs-directory "custom.el"))
+(load-file custom-file)
+
+;;; backups
+(defconst backup-dir
+       (concat user-emacs-directory "backup/"))
+(setq backup-directory-alist `(("." . ,backup-dir))
+      backup-by-copying t
+      delete-old-versions t
+      kept-new-versions 10
+      kept-old-versions 10)
 
 ;;; Hide useless buffers when cycling through buffers
 (defvar buffers-not-to-ignore '("*shell*" "*ielm*" "*eww*" "*terminal*" "*ansi-term*" "*eshell*"))
@@ -7,35 +27,20 @@
                        (lambda (buf) (or (member (buffer-name buf) buffers-not-to-ignore)
                                          (not (string-match-p "^*" (buffer-name buf)))
                                          ))))
-(ignore-useless-buffers)
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (ignore-useless-buffers))))
+  (ignore-useless-buffers))
+
 (add-hook 'after-make-frame-functions
           (lambda (frame)
-            (set-window-scroll-bars
-             (minibuffer-window frame) 0 nil 0 nil t)
-            (set-window-fringes
-             (minibuffer-window frame) 0 0 nil t)))
-
-(tool-bar-mode -1)
-(setq scroll-step 1)
-(setq-default cursor-type 'bar)
-(setq inhibit-startup-screen t)
-
-(setq-default custom-file (concat user-emacs-directory "custom.el"))
-
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup/"))
-      backup-by-copying t
-      delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2)
-
-(setq gc-cons-threshold (expt 2 24))
-
-(when (and (fboundp 'native-comp-available-p) (native-comp-available-p))
-  (progn
-    (setq native-comp-async-report-warnings-errors nil)
-    (setq native-comp-deferred-compilation t)
-    (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
-    (setq package-native-compile t)))
+            (with-selected-frame frame
+              (set-window-scroll-bars
+               (minibuffer-window frame) 0 nil 0 nil t)
+              (set-window-fringes
+               (minibuffer-window frame) 0 0 nil t))))
 
 ;;; Changing buffers
 (global-set-key (kbd "C-<tab>") 'next-buffer)
@@ -57,7 +62,7 @@
 (global-set-key (kbd "C-x C-S-s") 'rename-file-and-buffer)
 
 ;;; Terminal
-(global-set-key (kbd "C-t") (lambda() (interactive) (term "/usr/bin/bash")))
+(global-set-key (kbd "C-t") (lambda() (interactive) (term "bash")))
 
 ;;; Remove trailing spaces on save
 (add-hook 'before-save-hook
@@ -71,7 +76,7 @@
 
 ;;; Font
 (add-to-list 'default-frame-alist
-             '(font . "iosevka term-13"))
+             '(font . "iosevka 13"))
 
 ;;; C-w to close buffer
 (global-unset-key (kbd "C-w"))
@@ -88,20 +93,24 @@
 (setq recentf-max-menu-items 25)
 (setq recentf-max-saved-items 25)
 
-;;; Use spaces instead of tabs
+;;; Remember history
+(setq history-length 25)
+(savehist-mode 1)
+
+(save-place-mode 1)
 
 ; Stroustrup style without namespace indentation
 (c-add-style "modified-stroustrup"
              '("stroustrup"
-               (c-basic-offset . 3)
-               (tab-width . 3)
+               (c-basic-offset . 2)
+               (tab-width . 2)
                (c-offsets-alist
                 (innamespace . 0)
                 )))
 
 (setq-default indent-tabs-mode nil
-              c-basic-offset 3
-              tab-width 3
+              c-basic-offset 2
+              tab-width 2
               c-default-style "modified-stroustrup")
 
 ;;; Cua mode
@@ -165,7 +174,7 @@
 (use-package nord-theme
   :ensure t)
 
-(load-theme 'mayukai-dark t)
+(load-theme 'electric-ice-darker t)
 
 ;;; Multiple cursors
 (global-unset-key (kbd "C-<mouse-1>"))
@@ -210,38 +219,46 @@
 (use-package drag-stuff
   :ensure t
   :config (drag-stuff-define-keys)
-  :config (drag-stuff-global-mode 1)
+  (drag-stuff-global-mode 1)
 )
 
 ;;; Company
 (use-package company
   :ensure t
   :config (add-hook 'after-init-hook 'global-company-mode)
-  :config (setq company-minimum-prefix-length 2)
+  (setq company-minimum-prefix-length 2)
 )
 
 ;;; LSP
 (use-package lsp-mode
-  :ensure t)
+  :ensure t
+  :hook (c++-mode . lsp)
+  :config (setq lsp-clients-clangd-args '("--header-insertion=never"))
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++20")))
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++20"))))
 (use-package lsp-pyright
   :ensure t)
 
-;;; Rust
+(use-package nix-mode
+  :ensure t
+  :mode ("\\.nix\\'" . nix-mode))
 (use-package rust-mode
-  :ensure t)
-
-;;; CMake
+  :ensure t
+  :config (defun set-rustfmt-keybinding ()
+            (local-set-key (kbd "C-, f") 'rust-format-buffer))
+  (add-hook 'rust-mode-hook 'set-rustfmt-keybinding)
+  (add-hook 'rust-mode-hook #'lsp))
 (use-package cmake-mode
   :ensure t
   :mode ("CMakeLists.txt" . cmake-mode))
-
-;;; Meson
 (use-package meson-mode
   :ensure t
   :mode ("meson.build" . meson-mode))
-
-;;; Lex
 (use-package bison-mode
+  :ensure t)
+
+;;; Haskell
+(use-package haskell-mode
   :ensure t)
 
 ;;; Automatically refreshes the buffer for changes outside of Emacs
@@ -264,3 +281,15 @@
 
 ;;; Other
 (global-set-key (kbd "C-, C-e")  'flymake-show-buffer-diagnostics)
+
+(use-package tree-sitter
+  :ensure t)
+(setq font-lock-maximum-decoration 2)
+
+(use-package clang-format
+  :ensure t
+  :config (defun set-clang-format-keybinding ()
+            (local-set-key (kbd "C-, f") 'clang-format-buffer))
+  (add-hook 'c-mode-hook 'set-clang-format-keybinding)
+  (add-hook 'c++-mode-hook 'set-clang-format-keybinding)
+  )

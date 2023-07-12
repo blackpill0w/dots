@@ -43,33 +43,34 @@ determine the exact padding."
 ;;
 ;;; Theme definition
 
-(def-doom-theme electric
+(def-doom-theme electric-ice-dark
   "A dark theme inspired by Ayu dark"
 
   ;; name        default   256       16
   (
    ;; common
-   (common-accent   '("#1ea8fc" "blue"  "blue"     ))
-   (common-bg       '("#0d1017" "black"   "black"  ))
-   (common-line     '("#131721" "grey"    "grey"   ))
+   (common-accent   '("#7df4f8" "blue"  "blue"     ))
+   (common-bg       '("#000000" "black"   "black"  ))
+   (common-line     '("#131717" "grey"    "grey"   ))
    (common-fg       '("#ffffff" "grey"    "grey"   ))
-   (common-ui       '("#565b66" "grey"    "grey"   ))
-   (test            '("#73b8ff" "grey"    "grey"   ))
+   (common-ui       '("#565b5a" "grey"    "grey"   ))
+   (test            '("#ffffff" "grey"    "grey"   ))
    ;; syntax
-   (syntax-tag      '("#39bae6" "cyan"    "blue"   ))
-   (blue            '("#1ea8fc" "blue"    "blue"   ))
-   (bright-cyan     '("#60e8f0" "cyan"    "cyan"   ))
+   (bright-red      '("#ffb0b0" "red"     "red"    ))
+   (syntax-tag      '("#aaaaaa" "cyan"    "blue"   ))
+   (bright-cyan     '("#7df4f8" "cyan"    "cyan"   ))
+   (blue            '("#40ffff" "blue"    "blue"   ))
    (syntax-func     '("#c286ff" "yellow"  "yellow" ))
    (syntax-entity   '("#59c2ff" "blue"    "blue"   ))
-   (syntax-string   bright-cyan)
+   (syntax-string   bright-red)
    (syntax-regexp   '("#95e6cb" "teal"    "green"  ))
    (syntax-markup   '("#f07178" "red"     "red"    ))
    (syntax-keyword  blue)
    (purple          '("#c286ff" "purple"  "purple" ))
-   (syntax-special  purple)
+   (syntax-special  common-fg)
    (syntax-comment  '("#475266" "grey"    "grey"   ))
-   (syntax-constant purple)
-   (syntax-operator purple)
+   (syntax-constant common-fg)
+   (syntax-operator common-fg)
    (syntax-error    '("#d95757" "red"     "red"    ))
    ;; editor
    (editor-selection-active '("#1B3A5B" "grey" "grey"))
@@ -126,7 +127,7 @@ determine the exact padding."
    (vertical-bar   ui-panel-border)
    (selection      nil)
    (builtin        nil)
-   (comments       (if doom-ayu-dark-brighter-comments dark-cyan base5))
+   (comments       syntax-comment)
    (doc-comments   (doom-lighten (if doom-ayu-dark-brighter-comments dark-cyan base5) 0.25))
    (constants      syntax-constant)
    (functions      fg)
@@ -136,7 +137,7 @@ determine the exact padding."
    (type           fg)
    (strings        syntax-string)
    (variables      common-fg)
-   (numbers        bright-cyan)
+   (numbers        fg)
    (region         ui-selection-bg)
    (error          syntax-error)
    (warning        yellow)

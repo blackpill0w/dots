@@ -3,8 +3,8 @@
 ;; Stroustrup style without namespace indentation
 (c-add-style "stroustrup-modified"
              '("stroustrup"
-               (c-basic-offset . 3)
-               (tab-width . 3)
+               (c-basic-offset . 2)
+               (tab-width . 2)
                (c-offsets-alist
                 (innamespace . 0)
                 )))
