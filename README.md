@@ -1,2 +1,4 @@
+# dots
+My dot files for various linux programs.
 # Note
-`.emacs.d` is for emacs, `.doom.d` is for doom emacs.
+`.config/emacs` is for emacs, `.doom.d` is for doom emacs.
