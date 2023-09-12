@@ -3,13 +3,36 @@
 (setq ring-bell-function 'ignore)
 
 ;;; UI tweaks
+
+;;; Themes
+
+;; Add themes directory
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
+
+;; Disable all previous themes before changing themes
+(defun disable-all-themes ()
+  "disable all active themes."
+  (dolist (i custom-enabled-themes)
+    (disable-theme i)))
+
+(defadvice load-theme (before disable-themes-first activate)
+  (disable-all-themes))
+
+(use-package dracula-theme
+  :ensure t)
+(use-package nord-theme
+  :ensure t)
+
+(load-theme 'electric-ice-darker t)
+
 (setq inhibit-startup-screen t)
 (tool-bar-mode -1)
 (setq scroll-step 1)
 (set-window-scroll-bars (minibuffer-window) 0 'none)
 ;;; Custom variables file
 (setq-default custom-file (concat user-emacs-directory "custom.el"))
-(load-file custom-file)
+(if (file-exists-p custom-file)
+    (load-file custom-file))
 
 ;;; backups
 (defconst backup-dir
@@ -33,14 +56,6 @@
                 (with-selected-frame frame
                   (ignore-useless-buffers))))
   (ignore-useless-buffers))
-
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (with-selected-frame frame
-              (set-window-scroll-bars
-               (minibuffer-window frame) 0 nil 0 nil t)
-              (set-window-fringes
-               (minibuffer-window frame) 0 0 nil t))))
 
 ;;; Changing buffers
 (global-set-key (kbd "C-<tab>") 'next-buffer)
@@ -71,8 +86,12 @@
 ;;; Whitespace
 ;;(global-whitespace-mode 1) TODO: whitespace only with selection
 (setq whitespace-line-column 5000)
-(load-file (concat user-emacs-directory "other/whitespace4r.el"))
-(add-hook 'prog-mode-hook #'whitespace4r-mode)
+(setq-default whitespace4r-file (concat user-emacs-directory "other/whitespace4r.el"))
+(if (file-exists-p whitespace4r-file)
+    (progn
+      (load-file whitespace4r-file)
+      (add-hook 'prog-mode-hook #'whitespace4r-mode))
+  )
 
 ;;; Font
 (add-to-list 'default-frame-alist
@@ -142,8 +161,11 @@
         use-package-expand-minimally t))
 
 ;;; Folding
-(load-file (concat user-emacs-directory "other/hideshowvis.el"))
-(add-hook 'prog-mode-hook #'hideshowvis-minor-mode)
+(setq-default hideshowvis-file (concat user-emacs-directory "other/hideshowvis.el"))
+(if (file-exists-p hideshowvis-file)
+    (progn
+      (load-file hideshowvis-file)
+      (add-hook 'prog-mode-hook #'hideshowvis-minor-mode)))
 
 ;(use-package yafolding
 ;  :ensure t
@@ -155,32 +177,11 @@
 ;(global-set-key (kbd "C-, C-S-s")  'yafolding-show-all)
 ;(global-set-key (kbd "C-, C-S-h")  'yafolding-hide-all)
 
-;;; Themes
-
-;; Add themes directory
-(add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
-
-;; Disable all previous themes before changing themes
-(defun disable-all-themes ()
-  "disable all active themes."
-  (dolist (i custom-enabled-themes)
-    (disable-theme i)))
-
-(defadvice load-theme (before disable-themes-first activate)
-  (disable-all-themes))
-
-(use-package dracula-theme
-  :ensure t)
-(use-package nord-theme
-  :ensure t)
-
-(load-theme 'electric-ice-darker t)
-
 ;;; Multiple cursors
 (global-unset-key (kbd "C-<mouse-1>"))
 (use-package multiple-cursors
   :ensure t
-  :config (define-key mc/keymap (kbd "<return>") nil)
+  ;:config (define-key mc/keymap (kbd "<return>") nil)
   :bind (
       ("C->" . mc/mark-previous-like-this)
       ("C-<" . mc/mark-next-like-this)
@@ -234,8 +235,8 @@
   :ensure t
   :hook (c++-mode . lsp)
   :config (setq lsp-clients-clangd-args '("--header-insertion=never"))
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++20")))
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++20"))))
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++23")))
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++23"))))
 (use-package lsp-pyright
   :ensure t)
 
@@ -293,3 +294,17 @@
   (add-hook 'c-mode-hook 'set-clang-format-keybinding)
   (add-hook 'c++-mode-hook 'set-clang-format-keybinding)
   )
+
+(use-package smex
+  :ensure t
+  :config (global-set-key (kbd "M-x") 'smex))
+(ido-mode 1)
+
+(use-package nov
+  :ensure t
+  :config (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+  (defun my-nov-font-setup ()
+    (face-remap-add-relative 'variable-pitch :family "Iosevka"
+                                           :height 1.0))
+  (add-hook 'nov-mode-hook 'my-nov-font-setup)
+)
