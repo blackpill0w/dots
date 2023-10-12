@@ -1,6 +1,6 @@
 if [ "${TERM:0:5}" == "xterm" ]
 then
- typeset TERM=xterm-color  # force colour prompt
+ force_color_prompt=yes
 fi
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -85,13 +85,30 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+# Aliases
+alias cl='printf "\E[H\E[3J" && clear'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+# grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+# ls
+alias ls='ls --color=auto'
+alias lla='ls -lAh'
+alias ll='ls -lh'
+alias la='ls -Ah'
+alias l='ls -CFh'
+# protonvpn
+alias vpn='protonvpn-cli d; protonvpn-cli c'
+alias vpnf='protonvpn-cli d; protonvpn-cli c -f'
+alias vpnd='protonvpn-cli d'
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias paru='paru --skipreview'
+
+alias temacs='emacs -nw -q --load ~/.config/emacs/terminal_config.el'
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

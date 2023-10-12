@@ -1,11 +1,26 @@
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq gc-cons-threshold (expt 2 24))
-(setq ring-bell-function 'ignore)
+
+;;; Add melpa
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+;; use-package options
+(setq use-package-always-ensure t
+     use-package-expand-minimally t)
+     
+;;; Cua mode
+(cua-mode t)
 
 ;;; UI tweaks
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(setq ring-bell-function 'ignore)
+
+;;; Font
+(add-to-list 'default-frame-alist
+             '(font . "iosevka 12"))
+(setq font-lock-maximum-decoration 2)
 
 ;;; Themes
-
 ;; Add themes directory
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
 
@@ -93,10 +108,6 @@
       (add-hook 'prog-mode-hook #'whitespace4r-mode))
   )
 
-;;; Font
-(add-to-list 'default-frame-alist
-             '(font . "iosevka 13"))
-
 ;;; C-w to close buffer
 (global-unset-key (kbd "C-w"))
 (global-set-key (kbd "C-w") 'kill-current-buffer)
@@ -132,9 +143,6 @@
               tab-width 2
               c-default-style "modified-stroustrup")
 
-;;; Cua mode
-(cua-mode t)
-
 ;;; Set file's name as title
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 
@@ -147,18 +155,11 @@
 (global-set-key (kbd "C-S-/")  'comment-or-uncomment-region)
 (global-set-key (kbd "C-S-:")  'comment-or-uncomment-region)
 
-;;; Add melpa
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-
 ;;; Install use package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-and-compile
-  (setq use-package-always-ensure t
-        use-package-expand-minimally t))
+;(unless (package-installed-p 'use-package)
+;  (package-refresh-contents)
+;  (package-install 'use-package))
+;(eval-and-compile
 
 ;;; Folding
 (setq-default hideshowvis-file (concat user-emacs-directory "other/hideshowvis.el"))
@@ -177,16 +178,26 @@
 ;(global-set-key (kbd "C-, C-S-s")  'yafolding-show-all)
 ;(global-set-key (kbd "C-, C-S-h")  'yafolding-hide-all)
 
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-startup-banner "~/Pictures/Random/bugs_bunny.jpg")
+  (setq dashboard-center-content t)
+  (setq dashboard-image-banner-max-height 350)
+  (setq dashboard-image-banner-max-width 500)
+  )
+
 ;;; Multiple cursors
 (global-unset-key (kbd "C-<mouse-1>"))
 (use-package multiple-cursors
   :ensure t
-  ;:config (define-key mc/keymap (kbd "<return>") nil)
+  :config (define-key mc/keymap (kbd "<return>") nil)
   :bind (
-      ("C->" . mc/mark-previous-like-this)
-      ("C-<" . mc/mark-next-like-this)
-      ("C-M-<mouse-1>" . mc/add-cursor-on-click)
-      )
+         ("C->" . mc/mark-previous-like-this)
+         ("C-<" . mc/mark-next-like-this)
+         ("C-M-<mouse-1>" . mc/add-cursor-on-click)
+         )
   )
 
 ;;; Project manager
@@ -198,23 +209,23 @@
   )
 
 ;;; Icons
-(use-package all-the-icons
-  :ensure t)
+;(use-package all-the-icons
+;  :ensure t)
 
 ;;; Side tree
-(use-package treemacs
-  :ensure t
-  :bind ("C-b" . treemacs)
-  :config
-  (progn
-    (setq treemacs-show-cursor nil)
-    )
-  )
+;(use-package treemacs
+;  :ensure t
+;  :bind ("C-b" . treemacs)
+;  :config
+;  (progn
+;    (setq treemacs-show-cursor nil)
+;    )
+;  )
 
-(use-package treemacs-all-the-icons
-  :ensure t
-  :config
-  (treemacs-load-theme "all-the-icons"))
+;(use-package treemacs-all-the-icons
+;  :ensure t
+;  :config
+;  (treemacs-load-theme "all-the-icons"))
 
 ;;; Move lines up/down
 (use-package drag-stuff
@@ -236,31 +247,43 @@
   :hook (c++-mode . lsp)
   :config (setq lsp-clients-clangd-args '("--header-insertion=never"))
   (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++23")))
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++23"))))
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++23")))
+  (setq lsp-haskell-server-path "haskell-language-server"))
+
+
 (use-package lsp-pyright
   :ensure t)
 
-(use-package nix-mode
-  :ensure t
-  :mode ("\\.nix\\'" . nix-mode))
+(add-hook 'haskell-mode-hook #'lsp)
+(add-hook 'haskell-literate-mode-hook #'lsp)
+
+(use-package tuareg
+  :ensure t)
+
+;(use-package nix-mode
+;  :ensure t
+;  :mode ("\\.nix\\'" . nix-mode))
+
 (use-package rust-mode
   :ensure t
   :config (defun set-rustfmt-keybinding ()
             (local-set-key (kbd "C-, f") 'rust-format-buffer))
   (add-hook 'rust-mode-hook 'set-rustfmt-keybinding)
   (add-hook 'rust-mode-hook #'lsp))
+
 (use-package cmake-mode
   :ensure t
   :mode ("CMakeLists.txt" . cmake-mode))
+
 (use-package meson-mode
   :ensure t
   :mode ("meson.build" . meson-mode))
+
 (use-package bison-mode
   :ensure t)
 
-;;; Haskell
-(use-package haskell-mode
-  :ensure t)
+(use-package lsp-java
+   :ensure t)
 
 ;;; Automatically refreshes the buffer for changes outside of Emacs
 (use-package autorevert
@@ -272,20 +295,8 @@
         global-auto-revert-non-file-buffers t
         auto-revert-verbose nil))
 
-;;; Web mode
-(use-package web-mode
-  :mode (("\\.html?\\'" . web-mode)
-         ("\\.css\\'"   . web-mode)
-         ("\\.jsx?\\'"  . web-mode)
-         ("\\.tsx?\\'"  . web-mode)
-         ("\\.json\\'"  . web-mode)))
-
 ;;; Other
 (global-set-key (kbd "C-, C-e")  'flymake-show-buffer-diagnostics)
-
-(use-package tree-sitter
-  :ensure t)
-(setq font-lock-maximum-decoration 2)
 
 (use-package clang-format
   :ensure t
