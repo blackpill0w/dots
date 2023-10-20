@@ -1,0 +1,1 @@
+("~/Code/pyshit/Mu/" "~/Code/sys/dots/" "~/Code/pyshit/Mu/deps/Music-Indexer/" "~/Code/c_c++/Music-Indexer/" "~/Code/c_c++/MuCpp/" "~/Code/haskell/AoC-2022/" "~/Code/c_c++/Game-Engine-2D/")

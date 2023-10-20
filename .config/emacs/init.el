@@ -7,7 +7,7 @@
 ;; use-package options
 (setq use-package-always-ensure t
      use-package-expand-minimally t)
-     
+
 ;;; Cua mode
 (cua-mode t)
 
@@ -245,6 +245,7 @@
 (use-package lsp-mode
   :ensure t
   :hook (c++-mode . lsp)
+  (python-mode . lsp)
   :config (setq lsp-clients-clangd-args '("--header-insertion=never"))
   (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++23")))
   (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++23")))
@@ -253,6 +254,7 @@
 
 (use-package lsp-pyright
   :ensure t)
+(setq python-indent-offset 2)
 
 (add-hook 'haskell-mode-hook #'lsp)
 (add-hook 'haskell-literate-mode-hook #'lsp)

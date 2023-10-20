@@ -1,0 +1,5 @@
+mkdir deps/Music-Indexer/build_release
+cd deps/Music-Indexer/build_release
+cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build .
+cd ../../../

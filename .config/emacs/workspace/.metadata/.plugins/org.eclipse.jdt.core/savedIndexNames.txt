@@ -1,0 +1,5 @@
+INDEX VERSION 1.133+/home/blackpill0w/Code/sys/dots/.config/emacs/workspace/.metadata/.plugins/org.eclipse.jdt.core
+2949097923.index
+1865797976.index
+3842426239.index
+3256159553.index
