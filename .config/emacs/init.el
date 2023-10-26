@@ -17,7 +17,7 @@
 
 ;;; Font
 (add-to-list 'default-frame-alist
-             '(font . "iosevka 12"))
+             '(font . "Iosevka Term ss07 12"))
 (setq font-lock-maximum-decoration 2)
 
 ;;; Themes
@@ -240,6 +240,9 @@
   :config (add-hook 'after-init-hook 'global-company-mode)
   (setq company-minimum-prefix-length 2)
 )
+
+(use-package latex-preview-pane
+  :ensure t)
 
 ;;; LSP
 (use-package lsp-mode
