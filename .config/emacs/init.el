@@ -4,9 +4,15 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+;; use-package
+(if (version< emacs-version "29")
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  ())
 ;; use-package options
+
 (setq use-package-always-ensure t
-     use-package-expand-minimally t)
+      use-package-expand-minimally t)
 
 ;;; Cua mode
 (cua-mode t)
@@ -17,7 +23,7 @@
 
 ;;; Font
 (add-to-list 'default-frame-alist
-             '(font . "Iosevka Term ss07 12"))
+             '(font . "Iosevka Fixed ss07 12"))
 (setq font-lock-maximum-decoration 2)
 
 ;;; Themes
@@ -42,12 +48,20 @@
 
 (setq inhibit-startup-screen t)
 (tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 (setq scroll-step 1)
 (set-window-scroll-bars (minibuffer-window) 0 'none)
 ;;; Custom variables file
 (setq-default custom-file (concat user-emacs-directory "custom.el"))
 (if (file-exists-p custom-file)
     (load-file custom-file))
+
+(setq-default ocaml-stuff-file "/home/blackpill0w/.opam/default/share/emacs/site-lisp")
+(if (file-exists-p ocaml-stuff-file)
+    (add-to-list 'load-path ocaml-stuff-file))
+(use-package ocp-indent
+  :ensure t)
 
 ;;; backups
 (defconst backup-dir
@@ -163,20 +177,21 @@
 
 ;;; Folding
 (setq-default hideshowvis-file (concat user-emacs-directory "other/hideshowvis.el"))
-(if (file-exists-p hideshowvis-file)
-    (progn
-      (load-file hideshowvis-file)
-      (add-hook 'prog-mode-hook #'hideshowvis-minor-mode)))
+;(if (file-exists-p hideshowvis-file)
+;    (progn
+;      (load-file hideshowvis-file)
+;      (add-hook 'prog-mode-hook #'hideshowvis-minor-mode)))
 
-;(use-package yafolding
-;  :ensure t
-;  :config (yafolding-mode t))
-;(global-set-key (kbd "C-, C-s")  'yafolding-show-parent-element)
-;(global-set-key (kbd "C-, C-h")  'yafolding-hide-parent-element)
-;(global-set-key (kbd "C-, s")  'yafolding-show-element)
-;(global-set-key (kbd "C-, h")  'yafolding-hide-element)
-;(global-set-key (kbd "C-, C-S-s")  'yafolding-show-all)
-;(global-set-key (kbd "C-, C-S-h")  'yafolding-hide-all)
+(use-package yafolding
+  :ensure t
+  :config (yafolding-mode t)
+  (global-set-key (kbd "C-, C-s")  'yafolding-show-parent-element)
+  (global-set-key (kbd "C-, C-h")  'yafolding-hide-parent-element)
+  (global-set-key (kbd "C-, s")  'yafolding-show-element)
+  (global-set-key (kbd "C-, h")  'yafolding-hide-element)
+  (global-set-key (kbd "C-, C-S-s")  'yafolding-show-all)
+  (global-set-key (kbd "C-, C-S-h")  'yafolding-hide-all)
+)
 
 (use-package dashboard
   :ensure t
@@ -189,13 +204,14 @@
   )
 
 ;;; Multiple cursors
-(global-unset-key (kbd "C-<mouse-1>"))
 (use-package multiple-cursors
   :ensure t
-  :config (define-key mc/keymap (kbd "<return>") nil)
+  :config
+  (global-unset-key (kbd "C-<mouse-1>"))
+  (define-key mc/keymap (kbd "<return>") nil)
   :bind (
-         ("C->" . mc/mark-previous-like-this)
-         ("C-<" . mc/mark-next-like-this)
+         ("C-S-<up>" . mc/mark-previous-like-this)
+         ("C-S-<down>" . mc/mark-next-like-this)
          ("C-M-<mouse-1>" . mc/add-cursor-on-click)
          )
   )
@@ -247,7 +263,7 @@
 ;;; LSP
 (use-package lsp-mode
   :ensure t
-  :hook (c++-mode . lsp)
+  :hook ;(c++-mode . lsp)
   (python-mode . lsp)
   :config (setq lsp-clients-clangd-args '("--header-insertion=never"))
   (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++23")))
@@ -259,15 +275,21 @@
   :ensure t)
 (setq python-indent-offset 2)
 
+(use-package haskell-mode
+  :ensure t)
+
 (add-hook 'haskell-mode-hook #'lsp)
 (add-hook 'haskell-literate-mode-hook #'lsp)
 
 (use-package tuareg
   :ensure t)
+(use-package ocp-indent
+  :ensure t)
+(add-to-list 'load-path "/home/blackpill0w/.opam/default/share/emacs/site-lisp")
 
-;(use-package nix-mode
-;  :ensure t
-;  :mode ("\\.nix\\'" . nix-mode))
+(use-package nix-mode
+  :ensure t
+  :mode ("\\.nix\\'" . nix-mode))
 
 (use-package rust-mode
   :ensure t
@@ -320,7 +342,7 @@
   :ensure t
   :config (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
   (defun my-nov-font-setup ()
-    (face-remap-add-relative 'variable-pitch :family "Iosevka"
+    (face-remap-add-relative 'variable-pitch :family "Iosevka Fixed ss07"
                                            :height 1.0))
   (add-hook 'nov-mode-hook 'my-nov-font-setup)
 )

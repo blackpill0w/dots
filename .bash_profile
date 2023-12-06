@@ -1,11 +1,9 @@
-#
-# ~/.bash_profile
-#
-
-export EDITOR=micro
+export EDITOR=nvim
+export TERMINAL=kitty
 export XCURSOR_SIZE=16
-export PATH="$PATH:/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin/:~/.local/bin:~/.config/emacs/bin:~/.cargo/bin:~/.cabal/bin"
-export QT_QPA_PLATFORMTHEME=gnome
+export XCURSOR_THEME=Adwaita
+export PATH="$PATH:~/.local/bin"
+#export QT_QPA_PLATFORMTHEME=gnome
 export BAT_THEME=gruvbox-dark
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc

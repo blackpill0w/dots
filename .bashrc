@@ -105,10 +105,8 @@ alias vpnf='protonvpn-cli d; protonvpn-cli c -f'
 alias vpnd='protonvpn-cli d'
 
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
-alias paru='paru --skipreview'
 
 alias temacs='emacs -nw -q --load ~/.config/emacs/terminal_config.el'
-
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

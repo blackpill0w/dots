@@ -1,0 +1,4 @@
+.config/emacs/*
+!.config/emacs/init.el
+!.config/emacs/themes
+!.config/emacs/other
