@@ -2,12 +2,11 @@ set $mod Mod4
 set $other-mod Mod1
 
 # set wallaper
-exec_always feh --bg-fill ~/Pictures/Wallpapers/Magic-the-Gathering.jpg
+exec_always feh --bg-fill ~/Pictures/Wallpapers/pixel-bridge.png
 
-# bindsym $mod+b exec librewolf
-bindsym $mod+b exec flatpak run io.gitlab.librewolf-community
-bindsym $mod+v exec codium
-bindsym $mod+t exec emacs
+bindsym $mod+b exec librewolf
+#bindsym $mod+v exec codium
+bindsym $mod+t exec /home/blackpill0w/.local/bin/emacs
 bindsym $mod+m exec elisa
 bindsym $mod+d exec rofi -show drun -show-icons
 bindsym $mod+Shift+d exec rofi -show run -show-icons
@@ -49,10 +48,11 @@ exec --no-startup-id dex --autostart --environment i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -c 000000
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock-fancy to lock the
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
+bindsym $mod+l exec i3lock-fancy -pf Iosevka  -- scrot -z
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -94,12 +94,6 @@ bindsym $mod+Shift+q kill
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -122,7 +116,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+h split h
 
 # split in vertical orientation
-#bindsym $mod+v split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -131,6 +125,8 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+# Default layout
+workspace_layout tabbed
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle

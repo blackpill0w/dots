@@ -1,5 +1,5 @@
 export EDITOR=nvim
-export TERMINAL=kitty
+export TERMINAL=st
 export XCURSOR_SIZE=16
 export XCURSOR_THEME=Adwaita
 export PATH="$PATH:~/.local/bin"

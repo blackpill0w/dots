@@ -31,7 +31,7 @@ set $menu_run_cmd "rofi -show run"
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/Wallpapers/Magic-the-Gathering.jpg fill
+output * bg ~/Pictures/Wallpapers/pixel-bridge.png fill
 #
 # Example configuration:
 #
@@ -43,10 +43,10 @@ output * bg ~/Pictures/Wallpapers/Magic-the-Gathering.jpg fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+ exec swayidle -w \
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -70,11 +70,11 @@ output * bg ~/Pictures/Wallpapers/Magic-the-Gathering.jpg fill
 #
 # Basics:
 #
-  # bindsym $mod+b exec librewolf
-  bindsym $mod+b exec flatpak run io.gitlab.librewolf-community
+  bindsym $mod+b exec librewolf
+  #bindsym $mod+b exec flatpak run io.gitlab.librewolf-community
   bindsym $mod+v exec codium
   bindsym $mod+t exec ~/.local/bin/emacs
-  bindsym $mod+m exec elisa
+  bindsym $mod+m exec quodlibet
 
     # Change/mute volume
     bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -90,7 +90,7 @@ output * bg ~/Pictures/Wallpapers/Magic-the-Gathering.jpg fill
     bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
     # Screenshots
     bindsym Print exec --no-startup-id gnome-screenshot -i
-    bindsym Ctrl+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+    bindsym Ctrl+Print exec slurp | grim -g - - | wl-copy
 
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -188,7 +188,7 @@ bindsym $mod+Shift+agrave move container to workspace number $ws10
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
-    exec layout tabbed
+    workspace_layout tabbed
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
@@ -237,16 +237,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 bar {
     position bottom
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%A -- %d-%m-%Y %I:%M %p'; do sleep 1; done
+    status_command while ~/.config/sway/swaybar.sh; do true; done
 
     colors {
         statusline #ffffff
